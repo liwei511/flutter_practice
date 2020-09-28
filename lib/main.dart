@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import './demo/counter.dart';
-import './demo/use_package.dart';
+import 'demo/index.dart';
 
 void main() {
   runApp(MyApp());
@@ -45,7 +44,7 @@ class MyHomePage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           FlatButton(
-            child: Text('计数器示例'),
+            child: Text(DemoTitle['counter']),
             textColor: Colors.blue,
             onPressed: () {
               Navigator.push(context, 
@@ -56,7 +55,7 @@ class MyHomePage extends StatelessWidget {
             },
           ),
           FlatButton(
-            child: Text('使用第三方包示例'),
+            child: Text(DemoTitle['use_package']),
             textColor: Colors.blue,
             onPressed: () {
               Navigator.push(context, 

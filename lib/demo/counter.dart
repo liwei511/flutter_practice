@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'index.dart';
 
 class CounterDemo extends StatefulWidget {
   @override
@@ -31,7 +32,7 @@ class _CounterDemoPageState extends State<CounterDemo> {
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
-        title: Text('计数器示例'),
+        title: Text(DemoTitle['counter']),
       ),
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
