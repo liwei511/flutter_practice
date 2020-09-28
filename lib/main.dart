@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import './demo/counter.dart';
+import './demo/use_package.dart';
 
 void main() {
   runApp(MyApp());
@@ -53,7 +54,18 @@ class MyHomePage extends StatelessWidget {
                 })
               );
             },
-          )
+          ),
+          FlatButton(
+            child: Text('使用第三方包示例'),
+            textColor: Colors.blue,
+            onPressed: () {
+              Navigator.push(context, 
+                MaterialPageRoute(builder: (context) {
+                  return UsePackageDemo();
+                })
+              );
+            }, 
+          ),
         ]
       ),
     );
