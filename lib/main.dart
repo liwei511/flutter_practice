@@ -65,6 +65,17 @@ class MyHomePage extends StatelessWidget {
               );
             }, 
           ),
+          FlatButton(
+            child: Text(DemoTitle['tapbox_state']),
+            textColor: Colors.blue,
+            onPressed: () {
+              Navigator.push(context, 
+                MaterialPageRoute(builder: (context) {
+                  return TapboxDemo();
+                })
+              );
+            }, 
+          ),
         ]
       ),
     );
