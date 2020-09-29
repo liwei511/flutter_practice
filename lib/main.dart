@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
         // closer together (more dense) than on mobile platforms.
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(title: 'Flutter实战'),
     );
   }
 }
@@ -49,7 +49,7 @@ class MyHomePage extends StatelessWidget {
             onPressed: () {
               Navigator.push(context, 
                 MaterialPageRoute(builder: (context) {
-                  return CounterDemo();
+                  return CounterDemo(title: DemoTitle['counter']);
                 })
               );
             },
@@ -60,7 +60,7 @@ class MyHomePage extends StatelessWidget {
             onPressed: () {
               Navigator.push(context, 
                 MaterialPageRoute(builder: (context) {
-                  return UsePackageDemo();
+                  return UsePackageDemo(title: DemoTitle['use_package']);
                 })
               );
             }, 
@@ -71,7 +71,7 @@ class MyHomePage extends StatelessWidget {
             onPressed: () {
               Navigator.push(context, 
                 MaterialPageRoute(builder: (context) {
-                  return TapboxDemo();
+                  return TapboxDemo(title: DemoTitle['tapbox_state']);
                 })
               );
             }, 

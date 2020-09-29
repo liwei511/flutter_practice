@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'index.dart';
 
 // 混合状态管理
 class TapboxDemo extends StatefulWidget {
+  TapboxDemo({Key key, this.title}) : super(key: key);
+  final String title;
   TapboxState createState() => TapboxState();
 }
 
@@ -16,7 +17,7 @@ class TapboxState extends State<TapboxDemo> {
 
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text(DemoTitle['tapbox_state'])),
+        appBar: AppBar(title: Text(widget.title)),
         body: Column(
           children: <Widget>[
             TapboxChild(
