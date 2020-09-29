@@ -76,6 +76,17 @@ class MyHomePage extends StatelessWidget {
               );
             }, 
           ),
+          FlatButton(
+            child: Text(DemoTitle['base_widget']),
+            textColor: Colors.blue,
+            onPressed: () {
+              Navigator.push(context, 
+                MaterialPageRoute(builder: (context) {
+                  return BaseWidgetDemo(title: DemoTitle['base_widget']);
+                })
+              );
+            }, 
+          ),
         ]
       ),
     );
