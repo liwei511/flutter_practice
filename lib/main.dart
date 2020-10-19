@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_practice/demo/custom-scrollview.dart';
 import 'demo/index.dart';
 
 void main() {
@@ -114,6 +115,16 @@ class MyHomePage extends StatelessWidget {
               onPressed: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) {
                   return ListViewDemo(title: DemoTitle['listview']);
+                }));
+              },
+            ),
+            FlatButton(
+              child: Text(DemoTitle['custom-scroll']),
+              textColor: Colors.blue,
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return CustomScrollViewDemo(
+                      title: DemoTitle['custom-scroll']);
                 }));
               },
             ),

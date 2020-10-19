@@ -15,5 +15,6 @@ const DemoTitle = {
   'style': '布局类组件',
   'scaffold': 'scaffold，导航',
   'will-popscope': '导航返回拦截',
-  'listview': '滚动加载列表'
+  'listview': '滚动加载列表',
+  'custom-scroll': 'CustomScrollView',
 };

@@ -31,6 +31,7 @@ class _InfiniteListViewState extends State<ListViewDemo> {
           title: Text(widget.title),
         ),
         body: Scrollbar(
+          // 有滚动条
           child: ListView.separated(
             itemCount: _words.length,
             itemBuilder: (context, index) {
