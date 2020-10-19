@@ -147,6 +147,15 @@ class MyHomePage extends StatelessWidget {
                 }));
               },
             ),
+            FlatButton(
+              child: Text(DemoTitle['alert-dialog']),
+              textColor: Colors.blue,
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return AlertDialogDemo(title: DemoTitle['alert-dialog']);
+                }));
+              },
+            ),
           ],
         ),
       ),

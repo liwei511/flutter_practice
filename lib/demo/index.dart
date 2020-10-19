@@ -8,6 +8,7 @@ export 'will-popscope.dart';
 export 'listview.dart';
 export 'scroll-controller.dart';
 export 'theme.dart';
+export 'alert-dialog.dart';
 
 const DemoTitle = {
   'counter': '计数器示例',
@@ -21,4 +22,5 @@ const DemoTitle = {
   'custom-scroll': 'CustomScrollView',
   'scroll-controller': '滚动监听及控制',
   'theme': '主题切换',
+  'alert-dialog': '对话框',
 };
