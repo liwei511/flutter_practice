@@ -5,10 +5,10 @@ class ListViewDemo extends StatefulWidget {
   ListViewDemo({Key key, this.title}) : super(key: key);
   final String title;
   @override
-  State<StatefulWidget> createState() => _InfiniteListViewState();
+  State<StatefulWidget> createState() => InfiniteListViewState();
 }
 
-class _InfiniteListViewState extends State<ListViewDemo> {
+class InfiniteListViewState extends State<ListViewDemo> {
   static const loadingTag = '##loading##';
   List _words = <String>[loadingTag];
 

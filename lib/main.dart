@@ -128,6 +128,16 @@ class MyHomePage extends StatelessWidget {
                 }));
               },
             ),
+            FlatButton(
+              child: Text(DemoTitle['scroll-controller']),
+              textColor: Colors.blue,
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return ScrollControllerDemo(
+                      title: DemoTitle['scroll-controller']);
+                }));
+              },
+            ),
           ],
         ),
       ),
