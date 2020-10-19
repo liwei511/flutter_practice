@@ -138,6 +138,15 @@ class MyHomePage extends StatelessWidget {
                 }));
               },
             ),
+            FlatButton(
+              child: Text(DemoTitle['theme']),
+              textColor: Colors.blue,
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return ThemeDemo(title: DemoTitle['theme']);
+                }));
+              },
+            ),
           ],
         ),
       ),
