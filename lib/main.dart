@@ -108,6 +108,15 @@ class MyHomePage extends StatelessWidget {
                 }));
               },
             ),
+            FlatButton(
+              child: Text(DemoTitle['listview']),
+              textColor: Colors.blue,
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return ListViewDemo(title: DemoTitle['listview']);
+                }));
+              },
+            ),
           ],
         ),
       ),

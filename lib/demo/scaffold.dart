@@ -6,6 +6,13 @@ class ScaffoldDemo extends StatefulWidget {
   _ScaffoldRouteState createState() => _ScaffoldRouteState();
 }
 
+// enum WF {
+//   harder,
+//   smarter,
+//   selfStarter,
+//   tradingCharter,
+// }
+
 class _ScaffoldRouteState extends State<ScaffoldDemo>
     with SingleTickerProviderStateMixin {
   int _selectedIndex = 1;
@@ -21,11 +28,36 @@ class _ScaffoldRouteState extends State<ScaffoldDemo>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: Text(widget.title),
-          bottom: TabBar(
-            controller: _tabController,
-            tabs: tabs.map((e) => Tab(text: e)).toList(),
-          )),
+        title: Text(widget.title),
+        bottom: TabBar(
+          controller: _tabController,
+          tabs: tabs.map((e) => Tab(text: e)).toList(),
+        ),
+        // actions: [
+        //   PopupMenuButton(
+        //     onSelected: (value) {},
+        //     icon: Icon(Icons.more_vert),
+        //     itemBuilder: (context) => <PopupMenuEntry<WF>>[
+        //       const PopupMenuItem<WF>(
+        //         value: WF.harder,
+        //         child: Text('Working a lot harder'),
+        //       ),
+        //       const PopupMenuItem<WF>(
+        //         value: WF.smarter,
+        //         child: Text('Being a lot smarter'),
+        //       ),
+        //       const PopupMenuItem<WF>(
+        //         value: WF.selfStarter,
+        //         child: Text('Being a self-starter'),
+        //       ),
+        //       const PopupMenuItem<WF>(
+        //         value: WF.tradingCharter,
+        //         child: Text('Placed in charge of trading charter'),
+        //       ),
+        //     ],
+        //   )
+        // ],
+      ),
       drawer: MyDrawer(),
       body: TabBarView(
         controller: _tabController,
@@ -76,37 +108,37 @@ class MyDrawer extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: const EdgeInsets.only(top: 38.0),
-                child: Row(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                      child: ClipOval(child: Image.asset(
-                        'images/18389869.png',
-                        width: 80,
-                      ),),
-                    ),
-                    Text(
-                      'Lee',
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    )
-                  ],
-                )
-              ),
+                  padding: const EdgeInsets.only(top: 38.0),
+                  child: Row(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                        child: ClipOval(
+                          child: Image.asset(
+                            'images/18389869.png',
+                            width: 80,
+                          ),
+                        ),
+                      ),
+                      Text(
+                        'Lee',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      )
+                    ],
+                  )),
               Expanded(
-                child: ListView(
-                  children: [
-                    ListTile(
-                      leading: Icon(Icons.add),
-                      title: Text('Add account'),
-                    ),
-                    ListTile(
-                      leading: Icon(Icons.settings),
-                      title: Text('Manage account'),
-                    )
-                  ],
-                )
-              )
+                  child: ListView(
+                children: [
+                  ListTile(
+                    leading: Icon(Icons.add),
+                    title: Text('Add account'),
+                  ),
+                  ListTile(
+                    leading: Icon(Icons.settings),
+                    title: Text('Manage account'),
+                  )
+                ],
+              ))
             ],
           )),
     );
