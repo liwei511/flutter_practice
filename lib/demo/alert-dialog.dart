@@ -1,5 +1,6 @@
 import 'dart:js';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class AlertDialogDemo extends StatelessWidget {
@@ -40,6 +41,30 @@ class AlertDialogDemo extends StatelessWidget {
                     );
                   });
             },
+          ),
+          RaisedButton(
+            child: Text('IOS风格'),
+            onPressed: () => showCupertinoDialog(
+              context: context,
+              builder: (context) => CupertinoAlertDialog(
+                title: Text('提示'),
+                content: Text('确认删除吗'),
+                actions: [
+                  CupertinoDialogAction(
+                    child: Text('取消'),
+                    onPressed: () {
+                      Navigator.of(context).pop('cacel');
+                    },
+                  ),
+                  CupertinoDialogAction(
+                    child: Text('确定'),
+                    onPressed: () {
+                      Navigator.of(context).pop('ok');
+                    },
+                  ),
+                ],
+              ),
+            ),
           ),
           RaisedButton(
             child: Text('异步对话框'),
