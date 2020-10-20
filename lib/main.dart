@@ -72,7 +72,9 @@ class MyHomePageState extends State<MyHomePage>
           Container(
             child: PracticeBasePage(),
           ),
-          PracticeAdvancedPage(),
+          Container(
+            child: PracticeAdvancedPage(),
+          ),
           PracticeExampledPage(),
         ],
       ),

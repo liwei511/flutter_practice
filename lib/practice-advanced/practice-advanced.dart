@@ -4,7 +4,6 @@ import 'package:flutter_practice/practice-advanced/router/gesture-detector-ex.da
 import 'package:flutter_practice/practice-advanced/router/pointer-event-ex.dart';
 import 'package:flutter_practice/practice-advanced/router/notification-ex.dart';
 import 'my-route.dart';
-import 'my-expansion-panel.dart';
 
 class MyRouteGroup {
   MyRouteGroup(
@@ -23,6 +22,7 @@ List<MyRouteGroup> myAppAdvancedRoutes = [
   MyRouteGroup(
       groupName: '事件处理与通知',
       icon: Icon(Icons.drag_handle),
+      isExpanded: false,
       routes: <MyRoute>[
         MyRoute(
           child: PointerEventExample(),
@@ -41,28 +41,32 @@ List<MyRouteGroup> myAppAdvancedRoutes = [
           title: '通知(Notification)',
         ),
       ]),
-  MyRouteGroup(groupName: '动画', icon: Icon(Icons.animation), routes: <MyRoute>[
-    MyRoute(
-      child: PointerEventExample(),
-      title: '动画结构',
-    ),
-    MyRoute(
-      child: GestureDetectorExample(),
-      title: '自定义路由过渡动画',
-    ),
-    MyRoute(
-      child: EventBusExample(),
-      title: 'hero动画',
-    ),
-    MyRoute(
-      child: NotificationExample(),
-      title: '交织动画',
-    ),
-    MyRoute(
-      child: NotificationExample(),
-      title: '动画过渡组件',
-    ),
-  ]),
+  MyRouteGroup(
+      groupName: '动画',
+      icon: Icon(Icons.animation),
+      isExpanded: false,
+      routes: <MyRoute>[
+        MyRoute(
+          child: PointerEventExample(),
+          title: '动画结构',
+        ),
+        MyRoute(
+          child: GestureDetectorExample(),
+          title: '自定义路由过渡动画',
+        ),
+        MyRoute(
+          child: EventBusExample(),
+          title: 'hero动画',
+        ),
+        MyRoute(
+          child: NotificationExample(),
+          title: '交织动画',
+        ),
+        MyRoute(
+          child: NotificationExample(),
+          title: '动画过渡组件',
+        ),
+      ]),
 ];
 
 class PracticeAdvancedPage extends StatefulWidget {
@@ -71,30 +75,35 @@ class PracticeAdvancedPage extends StatefulWidget {
 
 class PracticeAdvancedPageState extends State {
   Widget build(BuildContext context) {
-    // const demos = [
-    //   {'key': 'counter', 'component': CounterDemo},
-    //   {'key': 'use_package', 'component': CounterDemo},
-    //   {'key': 'tapbox_state', 'component': CounterDemo},
-    // ];
-    return Container(
-      padding: EdgeInsets.all(16.0),
+    return SingleChildScrollView(
+        child: Container(
       child: ExpansionPanelList(
-        expansionCallback: (int panelIndex, bool isExpanded) {},
+        expansionCallback: (int panelIndex, bool isExpanded) {
+          print(panelIndex);
+          print(isExpanded);
+          setState(() {
+            myAppAdvancedRoutes[panelIndex].isExpanded = !isExpanded;
+          });
+        },
         children: myAppAdvancedRoutes.map((group) {
           return ExpansionPanel(
             headerBuilder: (BuildContext context, bool isExpanded) {
               return ListTile(title: Text(group.groupName));
             },
-            body: ListView(
-              padding: EdgeInsets.all(8),
-              children: group.routes
-                  .map((er) => ListTile(title: Text(er.title)))
-                  .toList(),
+            body: Container(
+              height: (group.routes.length * 50)
+                  .toDouble(), // 这里必须告诉flutter高度， 否则不渲染
+              child: ListView(
+                padding: EdgeInsets.all(8),
+                children: group.routes
+                    .map((er) => ListTile(title: Text(er.title)))
+                    .toList(),
+              ),
             ),
-            isExpanded: false,
+            isExpanded: group.isExpanded,
           );
         }).toList(),
       ),
-    );
+    ));
   }
 }
