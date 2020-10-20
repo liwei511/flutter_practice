@@ -9,6 +9,7 @@ export 'listview.dart';
 export 'scroll-controller.dart';
 export 'theme.dart';
 export 'alert-dialog.dart';
+export 'custom-scrollview.dart';
 
 const DemoTitle = {
   'counter': '计数器示例',

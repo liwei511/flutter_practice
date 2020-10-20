@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_practice/demo/custom-scrollview.dart';
-import 'demo/index.dart';
+import 'practice-exampled/practice-exampled.dart';
+import 'practice-advanced/practice-advanced.dart';
+import 'practice-base/practice-base.dart';
 
 void main() {
   runApp(MyApp());
@@ -42,7 +43,7 @@ class MyHomePageState extends State<MyHomePage>
     with SingleTickerProviderStateMixin {
   int selectedIndex = 1;
   TabController tabController;
-  List tabs = ['入门', '进阶', '实例'];
+  List tabs = ['投弹', '飞行', '爆炸'];
 
   void initState() {
     super.initState();
@@ -76,154 +77,5 @@ class MyHomePageState extends State<MyHomePage>
         ],
       ),
     );
-  }
-}
-
-class PracticeBasePage extends StatelessWidget {
-  Widget build(BuildContext context) {
-    // const demos = [
-    //   {'key': 'counter', 'component': CounterDemo},
-    //   {'key': 'use_package', 'component': CounterDemo},
-    //   {'key': 'tapbox_state', 'component': CounterDemo},
-    // ];
-    return Scrollbar(
-      child: ListView(
-        shrinkWrap: true,
-        padding: EdgeInsets.all(20.0),
-        children: [
-          FlatButton(
-            child: Text(DemoTitle['counter']),
-            textColor: Colors.blue,
-            onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) {
-                return CounterDemo(title: DemoTitle['counter']);
-              }));
-            },
-          ),
-          FlatButton(
-            child: Text(DemoTitle['use_package']),
-            textColor: Colors.blue,
-            onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) {
-                return UsePackageDemo(title: DemoTitle['use_package']);
-              }));
-            },
-          ),
-          FlatButton(
-            child: Text(DemoTitle['tapbox_state']),
-            textColor: Colors.blue,
-            onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) {
-                return TapboxDemo(title: DemoTitle['tapbox_state']);
-              }));
-            },
-          ),
-          FlatButton(
-            child: Text(DemoTitle['base_widget']),
-            textColor: Colors.blue,
-            onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) {
-                return BaseWidgetDemo(title: DemoTitle['base_widget']);
-              }));
-            },
-          ),
-          FlatButton(
-            child: Text(DemoTitle['style']),
-            textColor: Colors.blue,
-            onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) {
-                return StyleDemo(title: DemoTitle['style']);
-              }));
-            },
-          ),
-          FlatButton(
-            child: Text(DemoTitle['will-popscope']),
-            textColor: Colors.blue,
-            onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) {
-                return WillPopScopeDemo(title: DemoTitle['will-popscope']);
-              }));
-            },
-          ),
-          FlatButton(
-            child: Text(DemoTitle['listview']),
-            textColor: Colors.blue,
-            onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) {
-                return ListViewDemo(title: DemoTitle['listview']);
-              }));
-            },
-          ),
-          FlatButton(
-            child: Text(DemoTitle['scaffold']),
-            textColor: Colors.blue,
-            onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) {
-                return ScaffoldDemo(title: DemoTitle['scaffold']);
-              }));
-            },
-          ),
-          FlatButton(
-            child: Text(DemoTitle['custom-scroll']),
-            textColor: Colors.blue,
-            onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) {
-                return CustomScrollViewDemo(title: DemoTitle['custom-scroll']);
-              }));
-            },
-          ),
-          FlatButton(
-            child: Text(DemoTitle['scroll-controller']),
-            textColor: Colors.blue,
-            onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) {
-                return ScrollControllerDemo(
-                    title: DemoTitle['scroll-controller']);
-              }));
-            },
-          ),
-          FlatButton(
-            child: Text(DemoTitle['theme']),
-            textColor: Colors.blue,
-            onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) {
-                return ThemeDemo(title: DemoTitle['theme']);
-              }));
-            },
-          ),
-          FlatButton(
-            child: Text(DemoTitle['alert-dialog']),
-            textColor: Colors.blue,
-            onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) {
-                return AlertDialogDemo(title: DemoTitle['alert-dialog']);
-              }));
-            },
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class PracticeAdvancedPage extends StatelessWidget {
-  Widget build(BuildContext context) {
-    // const demos = [
-    //   {'key': 'counter', 'component': CounterDemo},
-    //   {'key': 'use_package', 'component': CounterDemo},
-    //   {'key': 'tapbox_state', 'component': CounterDemo},
-    // ];
-    return Text('进阶');
-  }
-}
-
-class PracticeExampledPage extends StatelessWidget {
-  Widget build(BuildContext context) {
-    // const demos = [
-    //   {'key': 'counter', 'component': CounterDemo},
-    //   {'key': 'use_package', 'component': CounterDemo},
-    //   {'key': 'tapbox_state', 'component': CounterDemo},
-    // ];
-    return Text('实例');
   }
 }
