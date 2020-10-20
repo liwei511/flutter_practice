@@ -1,7 +1,7 @@
 export 'counter.dart';
 export 'use_package.dart';
 export 'tapbox_state.dart';
-export 'base_widget.dart';
+export 'base-widget.dart';
 export 'style.dart';
 export 'scaffold.dart';
 export 'will-popscope.dart';
