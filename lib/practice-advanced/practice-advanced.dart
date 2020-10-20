@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_practice/practice-advanced/router/event-bus-ex.dart';
-import 'package:flutter_practice/practice-advanced/router/gesture-detector-ex.dart';
-import 'package:flutter_practice/practice-advanced/router/pointer-event-ex.dart';
-import 'package:flutter_practice/practice-advanced/router/notification-ex.dart';
+import 'router/event-bus-ex.dart';
+import 'router/gesture-detector-ex.dart';
+import 'router/pointer-event-ex.dart';
+import 'router/notification-ex.dart';
 import 'my-route.dart';
 
 class MyRouteGroup {
@@ -79,8 +79,6 @@ class PracticeAdvancedPageState extends State {
         child: Container(
       child: ExpansionPanelList(
         expansionCallback: (int panelIndex, bool isExpanded) {
-          print(panelIndex);
-          print(isExpanded);
           setState(() {
             myAppAdvancedRoutes[panelIndex].isExpanded = !isExpanded;
           });
@@ -96,7 +94,13 @@ class PracticeAdvancedPageState extends State {
               child: ListView(
                 padding: EdgeInsets.all(8),
                 children: group.routes
-                    .map((er) => ListTile(title: Text(er.title)))
+                    .map((er) => ListTile(
+                          title: Text(er.title),
+                          onTap: () => Navigator.push(context,
+                              MaterialPageRoute(builder: (context) {
+                            return er;
+                          })),
+                        ))
                     .toList(),
               ),
             ),
