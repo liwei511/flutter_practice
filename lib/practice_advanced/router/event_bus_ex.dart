@@ -125,4 +125,4 @@ class EventBus {
 }
 
 // 遇到的问题
-// const, var, factory 等关键字含义
+// const, var, factory, final, static 等关键字含义

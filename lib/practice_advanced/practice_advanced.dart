@@ -3,6 +3,9 @@ import 'router/event_bus_ex.dart';
 import 'router/gesture_detector_ex.dart';
 import 'router/pointer_event_ex.dart';
 import 'router/notification_ex.dart';
+
+// 动画
+import 'router/animation_curved_ex.dart';
 import 'my_route.dart';
 
 class MyRouteGroup {
@@ -47,7 +50,7 @@ List<MyRouteGroup> myAppAdvancedRoutes = [
       isExpanded: false,
       routes: <MyRoute>[
         MyRoute(
-          child: PointerEventExample(),
+          child: AnimationCurvedExample(),
           title: '动画结构',
         ),
         MyRoute(
