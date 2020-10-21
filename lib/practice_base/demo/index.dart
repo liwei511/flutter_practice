@@ -1,15 +1,15 @@
 export 'counter.dart';
 export 'use_package.dart';
 export 'tapbox_state.dart';
-export 'base-widget.dart';
+export 'base_widget.dart';
 export 'style.dart';
 export 'scaffold.dart';
-export 'will-popscope.dart';
+export 'will_popscope.dart';
 export 'listview.dart';
-export 'scroll-controller.dart';
+export 'scroll_controller.dart';
 export 'theme.dart';
-export 'alert-dialog.dart';
-export 'custom-scrollview.dart';
+export 'alert_dialog.dart';
+export 'custom_scrollview.dart';
 
 const DemoTitle = {
   'counter': '计数器示例',
@@ -18,10 +18,10 @@ const DemoTitle = {
   'base_widget': '基础组件',
   'style': '布局类组件',
   'scaffold': 'scaffold，导航',
-  'will-popscope': '导航返回拦截',
+  'will_popscope': '导航返回拦截',
   'listview': '滚动加载列表',
-  'custom-scroll': 'CustomScrollView',
-  'scroll-controller': '滚动监听及控制',
+  'custom_scroll': 'CustomScrollView',
+  'scroll_controller': '滚动监听及控制',
   'theme': '主题切换',
-  'alert-dialog': '对话框',
+  'alert_dialog': '对话框',
 };

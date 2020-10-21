@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'router/event-bus-ex.dart';
-import 'router/gesture-detector-ex.dart';
-import 'router/pointer-event-ex.dart';
-import 'router/notification-ex.dart';
-import 'my-route.dart';
+import 'router/event_bus_ex.dart';
+import 'router/gesture_detector_ex.dart';
+import 'router/pointer_event_ex.dart';
+import 'router/notification_ex.dart';
+import 'my_route.dart';
 
 class MyRouteGroup {
   MyRouteGroup(

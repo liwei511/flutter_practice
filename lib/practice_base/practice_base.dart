@@ -59,11 +59,11 @@ class PracticeBasePage extends StatelessWidget {
             },
           ),
           FlatButton(
-            child: Text(DemoTitle['will-popscope']),
+            child: Text(DemoTitle['will_popscope']),
             textColor: Colors.blue,
             onPressed: () {
               Navigator.push(context, MaterialPageRoute(builder: (context) {
-                return WillPopScopeDemo(title: DemoTitle['will-popscope']);
+                return WillPopScopeDemo(title: DemoTitle['will_popscope']);
               }));
             },
           ),
@@ -86,21 +86,21 @@ class PracticeBasePage extends StatelessWidget {
             },
           ),
           FlatButton(
-            child: Text(DemoTitle['custom-scroll']),
+            child: Text(DemoTitle['custom_scroll']),
             textColor: Colors.blue,
             onPressed: () {
               Navigator.push(context, MaterialPageRoute(builder: (context) {
-                return CustomScrollViewDemo(title: DemoTitle['custom-scroll']);
+                return CustomScrollViewDemo(title: DemoTitle['custom_scroll']);
               }));
             },
           ),
           FlatButton(
-            child: Text(DemoTitle['scroll-controller']),
+            child: Text(DemoTitle['scroll_controller']),
             textColor: Colors.blue,
             onPressed: () {
               Navigator.push(context, MaterialPageRoute(builder: (context) {
                 return ScrollControllerDemo(
-                    title: DemoTitle['scroll-controller']);
+                    title: DemoTitle['scroll_controller']);
               }));
             },
           ),
@@ -114,11 +114,11 @@ class PracticeBasePage extends StatelessWidget {
             },
           ),
           FlatButton(
-            child: Text(DemoTitle['alert-dialog']),
+            child: Text(DemoTitle['alert_dialog']),
             textColor: Colors.blue,
             onPressed: () {
               Navigator.push(context, MaterialPageRoute(builder: (context) {
-                return AlertDialogDemo(title: DemoTitle['alert-dialog']);
+                return AlertDialogDemo(title: DemoTitle['alert_dialog']);
               }));
             },
           ),

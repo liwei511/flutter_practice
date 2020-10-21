@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'practice-exampled/practice-exampled.dart';
-import 'practice-advanced/practice-advanced.dart';
-import 'practice-base/practice-base.dart';
+import 'practice_exampled/practice_exampled.dart';
+import 'practice_advanced/practice_advanced.dart';
+import 'practice_base/practice_base.dart';
 
 void main() {
   runApp(MyApp());
