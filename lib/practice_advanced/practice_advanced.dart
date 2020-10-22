@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'router/animation_decorated_ex.dart';
+import 'router/animation_hero_example.dart';
+import 'router/animation_stagger_ex.dart';
+import 'router/animation_switch_ex.dart';
 import 'router/event_bus_ex.dart';
 import 'router/gesture_detector_ex.dart';
 import 'router/pointer_event_ex.dart';
@@ -6,6 +10,8 @@ import 'router/notification_ex.dart';
 
 // 动画
 import 'router/animation_curved_ex.dart';
+import 'router/animation_fade_route_ex.dart';
+
 import 'my_route.dart';
 
 class MyRouteGroup {
@@ -16,7 +22,7 @@ class MyRouteGroup {
       this.isExpanded});
 
   final String groupName;
-  final Widget icon;
+  final Icon icon;
   final List<MyRoute> routes;
   bool isExpanded = false;
 }
@@ -54,20 +60,74 @@ List<MyRouteGroup> myAppAdvancedRoutes = [
           title: '动画结构',
         ),
         MyRoute(
-          child: GestureDetectorExample(),
+          child: AnimationFadeRouteExmplate(),
           title: '自定义路由过渡动画',
         ),
         MyRoute(
-          child: EventBusExample(),
+          child: AnimationHeroExample(),
           title: 'hero动画',
         ),
         MyRoute(
-          child: NotificationExample(),
+          child: AnimationStaggerExample(),
           title: '交织动画',
         ),
         MyRoute(
-          child: NotificationExample(),
+          child: AnimationSwitchExample(),
+          title: '动画切换',
+        ),
+        MyRoute(
+          child: AnimationDecoratedExample(),
           title: '动画过渡组件',
+        ),
+      ]),
+  MyRouteGroup(
+      groupName: '自定义组件',
+      icon: Icon(Icons.build_circle),
+      isExpanded: false,
+      routes: <MyRoute>[
+        MyRoute(
+          child: AnimationCurvedExample(),
+          title: '动画结构',
+        ),
+      ]),
+  MyRouteGroup(
+      groupName: '文件操作和网络请求',
+      icon: Icon(Icons.attachment),
+      isExpanded: false,
+      routes: <MyRoute>[
+        MyRoute(
+          child: AnimationCurvedExample(),
+          title: '动画结构',
+        ),
+      ]),
+  MyRouteGroup(
+      groupName: '包和插件',
+      icon: Icon(Icons.backpack),
+      isExpanded: false,
+      routes: <MyRoute>[
+        MyRoute(
+          child: AnimationCurvedExample(),
+          title: '动画结构',
+        ),
+      ]),
+  MyRouteGroup(
+      groupName: '国际化',
+      icon: Icon(Icons.local_airport),
+      isExpanded: false,
+      routes: <MyRoute>[
+        MyRoute(
+          child: AnimationCurvedExample(),
+          title: '动画结构',
+        ),
+      ]),
+  MyRouteGroup(
+      groupName: 'Flutter核心原理',
+      icon: Icon(Icons.miscellaneous_services),
+      isExpanded: false,
+      routes: <MyRoute>[
+        MyRoute(
+          child: AnimationCurvedExample(),
+          title: '动画结构',
         ),
       ]),
 ];
@@ -89,7 +149,8 @@ class PracticeAdvancedPageState extends State {
         children: myAppAdvancedRoutes.map((group) {
           return ExpansionPanel(
             headerBuilder: (BuildContext context, bool isExpanded) {
-              return ListTile(title: Text(group.groupName));
+              return ListTile(
+                  leading: group.icon, title: Text(group.groupName));
             },
             body: Container(
               height: (group.routes.length * 50)
