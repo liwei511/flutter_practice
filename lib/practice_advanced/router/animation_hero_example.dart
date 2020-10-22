@@ -6,7 +6,41 @@ class AnimationHeroExample extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Text('路由之间飞行的widget'),
+      alignment: Alignment.topCenter,
+      child: InkWell(
+        child: Hero(
+          tag: 'avatar',
+          child: ClipOval(
+            child: Image.asset('./images/sliverappbar.jpg', width: 50.0),
+          ),
+        ),
+        onTap: () => Navigator.push(context, PageRouteBuilder(pageBuilder:
+            (BuildContext context, Animation animation,
+                Animation secondaryAnimation) {
+          return FadeTransition(
+              opacity: animation,
+              child: Scaffold(
+                appBar: AppBar(
+                  title: Text('原图'),
+                ),
+                body: HeroAnimationRouteB(),
+              ));
+        })),
+      ),
+    );
+  }
+}
+
+class HeroAnimationRouteB extends StatelessWidget {
+  const HeroAnimationRouteB({Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Hero(
+        tag: 'avatar',
+        child: Image.asset('./images/sliverappbar.jpg'),
+      ),
     );
   }
 }
