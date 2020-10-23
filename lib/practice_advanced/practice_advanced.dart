@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_practice/practice_advanced/router/custom_gradient_arc_ex.dart';
 import 'router/animation_decorated_ex.dart';
 import 'router/animation_hero_example.dart';
 import 'router/animation_stagger_ex.dart';
@@ -11,6 +12,9 @@ import 'router/notification_ex.dart';
 // 动画
 import 'router/animation_curved_ex.dart';
 import 'router/animation_fade_route_ex.dart';
+
+// custom
+import 'router/custom_gradient_button_ex.dart';
 
 import 'my_route.dart';
 
@@ -86,8 +90,12 @@ List<MyRouteGroup> myAppAdvancedRoutes = [
       isExpanded: false,
       routes: <MyRoute>[
         MyRoute(
-          child: AnimationCurvedExample(),
-          title: '动画结构',
+          child: CustomGradientButtonExample(),
+          title: '自定义渐变按钮',
+        ),
+        MyRoute(
+          child: CustomGradientArcPainterExample(),
+          title: '自定义环形进度条',
         ),
       ]),
   MyRouteGroup(
