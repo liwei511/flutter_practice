@@ -15,6 +15,8 @@ import 'router/animation_fade_route_ex.dart';
 
 // custom
 import 'router/custom_gradient_button_ex.dart';
+import 'router/custom_gradient_arc_ex.dart';
+import 'router/custom_progress_indicator_ex.dart';
 
 import 'my_route.dart';
 
@@ -96,6 +98,10 @@ List<MyRouteGroup> myAppAdvancedRoutes = [
         MyRoute(
           child: CustomGradientArcPainterExample(),
           title: '自定义环形进度条(web 不兼容)',
+        ),
+        MyRoute(
+          child: GradientCircularProgressRoute(),
+          title: '进度(web 不兼容)',
         ),
       ]),
   MyRouteGroup(
