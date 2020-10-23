@@ -95,7 +95,7 @@ List<MyRouteGroup> myAppAdvancedRoutes = [
         ),
         MyRoute(
           child: CustomGradientArcPainterExample(),
-          title: '自定义环形进度条',
+          title: '自定义环形进度条(web 不兼容)',
         ),
       ]),
   MyRouteGroup(
