@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_practice/practice_advanced/router/custom_gradient_arc_ex.dart';
+import 'package:flutter_practice/practice_advanced/router/http_ex.dart';
 import 'router/animation_decorated_ex.dart';
 import 'router/animation_hero_example.dart';
 import 'router/animation_stagger_ex.dart';
@@ -108,42 +109,22 @@ List<MyRouteGroup> myAppAdvancedRoutes = [
       groupName: '文件操作和网络请求',
       icon: Icon(Icons.attachment),
       isExpanded: false,
-      routes: <MyRoute>[
-        MyRoute(
-          child: AnimationCurvedExample(),
-          title: '动画结构',
-        ),
-      ]),
+      routes: <MyRoute>[MyRoute(child: HttpExample(), title: 'http请求')]),
   MyRouteGroup(
       groupName: '包和插件',
       icon: Icon(Icons.backpack),
       isExpanded: false,
-      routes: <MyRoute>[
-        MyRoute(
-          child: AnimationCurvedExample(),
-          title: '动画结构',
-        ),
-      ]),
+      routes: <MyRoute>[]),
   MyRouteGroup(
       groupName: '国际化',
       icon: Icon(Icons.local_airport),
       isExpanded: false,
-      routes: <MyRoute>[
-        MyRoute(
-          child: AnimationCurvedExample(),
-          title: '动画结构',
-        ),
-      ]),
+      routes: <MyRoute>[]),
   MyRouteGroup(
       groupName: 'Flutter核心原理',
       icon: Icon(Icons.miscellaneous_services),
       isExpanded: false,
-      routes: <MyRoute>[
-        MyRoute(
-          child: AnimationCurvedExample(),
-          title: '动画结构',
-        ),
-      ]),
+      routes: <MyRoute>[]),
 ];
 
 class PracticeAdvancedPage extends StatefulWidget {
