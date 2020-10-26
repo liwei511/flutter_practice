@@ -15,61 +15,78 @@ class Huayingjuhe extends StatefulWidget {
 class _HuayingjuheState extends State<Huayingjuhe> {
   Dio _dio = new Dio();
 
-  Response response;
+  // Response response;
 
-  List<dynamic> bannerData;
+  // List<dynamic> bannerData;
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    getBanner();
   }
 
-  void getBanner() async {
-    // response = await _dio.get('https://api.github.com/orgs/flutterchina/repos');
-    // print(response.data is String); // false
+  // void getBanner() async {
 
-    response = await _dio.post(
-      'https://api2.huayingjuhe.com/news/get_banners',
-      data: {'site': 1},
-    );
-    print(response.data);
-    var t = json.decode(response.data);
-    var h = jsonDecode(response.data);
-    print(h);
-    // 这里不能用 t.result
-    print(t);
-    print(t['result']);
-    print(t['result'] is String);
-    bannerData = t['result'];
-    for (var i = 0; i < bannerData.length; i++) {
-      print(bannerData[i]);
-    }
-  }
+  //   response = await _dio.post(
+  //     'https://api2.huayingjuhe.com/news/get_banners',
+  //     data: {'site': 1},
+  //   );
+  //   setState(() {
+  //     bannerData = json.decode(response.data)['result'];
+  //   });
+  //   for (var i = 0; i < bannerData.length; i++) {
+  //     print('https://ucs2.huayingjuhe.com' + bannerData[i]['url']);
+  //   }
+
+  //   print(1);
+  // }
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          SizedBox(
-            height: 200.0,
-            child: Swiper(
-              itemBuilder: (BuildContext context, int index) {
-                return Image.asset(
-                  'assets/images/lifecycle.jpg',
-                  fit: BoxFit.fill,
-                );
-              },
-              itemCount: 3,
-              pagination: SwiperPagination(),
-              control: SwiperControl(),
-            ),
-          )
-        ],
+    print(2);
+    // return Swiper(
+    //   itemBuilder: (BuildContext context, int index) {
+    //     return Image.asset(
+    //       'assets/images/lifecycle.jpg',
+    //       fit: BoxFit.fill,
+    //     );
+    //   },
+    //   itemCount: 3,
+    //   pagination: SwiperPagination(),
+    //   control: SwiperControl(),
+    // );
+    return FutureBuilder(
+      future: _dio.post(
+        'https://api2.huayingjuhe.com/news/get_banners',
+        data: {'site': 1},
       ),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.done) {
+          Response response = snapshot.data;
+          if (snapshot.hasError) {
+            return Text(snapshot.error.toString());
+          }
+          print(response);
+          var bannerData = json.decode(response.data)['result'];
+          print(bannerData.length);
+          return Swiper(
+            itemBuilder: (BuildContext context, int index) {
+              // return Image.asset(
+              //   'assets/images/lifecycle.jpg',
+              //   fit: BoxFit.fill,
+              // );
+              return Image.network(
+                'https://ucs2.huayingjuhe.com' + bannerData[index]['url'],
+                fit: BoxFit.fill,
+              );
+            },
+            itemCount: bannerData == null ? 0 : bannerData.length,
+            pagination: SwiperPagination(),
+            control: SwiperControl(),
+          );
+        }
+        return CircularProgressIndicator();
+      },
     );
   }
 }
