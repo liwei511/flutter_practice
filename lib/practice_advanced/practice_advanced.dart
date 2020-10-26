@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_practice/practice_advanced/router/custom_gradient_arc_ex.dart';
+import 'package:flutter_practice/practice_advanced/router/dio_ex.dart';
 import 'package:flutter_practice/practice_advanced/router/http_ex.dart';
 import 'router/animation_decorated_ex.dart';
 import 'router/animation_hero_example.dart';
@@ -109,7 +110,10 @@ List<MyRouteGroup> myAppAdvancedRoutes = [
       groupName: '文件操作和网络请求',
       icon: Icon(Icons.attachment),
       isExpanded: false,
-      routes: <MyRoute>[MyRoute(child: HttpExample(), title: 'http请求')]),
+      routes: <MyRoute>[
+        MyRoute(child: HttpExample(), title: 'http请求'),
+        MyRoute(child: DioExample(), title: '使用Dio请求')
+      ]),
   MyRouteGroup(
       groupName: '包和插件',
       icon: Icon(Icons.backpack),

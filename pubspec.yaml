@@ -31,6 +31,7 @@ dependencies:
   flutter_swiper: ^1.1.6
   random_words: ^1.0.2
   path_provider: ^1.6.21 # 文件操作 不兼容web
+  dio: ^3.0.10
 
 dev_dependencies:
   flutter_test:

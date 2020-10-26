@@ -8,6 +8,10 @@ class PracticeExampledPage extends StatelessWidget {
       child: FiveInARowExampled(),
       title: '五子棋(未完成)',
     ),
+    PracticeRoute(
+      child: Huayingjuhe(),
+      title: '华影聚合',
+    ),
   ];
   Widget build(BuildContext context) {
     return ListView(
