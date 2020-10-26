@@ -72,6 +72,7 @@ class _HuayingjuheState extends State<Huayingjuhe> {
                     itemCount: bannerData == null ? 0 : bannerData.length,
                     pagination: SwiperPagination(),
                     control: SwiperControl(),
+                    autoplay: true,
                   );
                 }
                 return CircularProgressIndicator();
@@ -117,6 +118,11 @@ class _HuayingjuheState extends State<Huayingjuhe> {
                     itemCount: bannerData == null ? 0 : bannerData.length,
                     pagination: SwiperPagination(),
                     control: SwiperControl(),
+                    viewportFraction: 0.8,
+                    scale: 0.9,
+                    itemWidth: 250.0,
+                    layout: SwiperLayout.STACK,
+                    autoplay: true,
                   );
                 }
                 return CircularProgressIndicator();
