@@ -23,6 +23,7 @@ class _HuayingjuheState extends State<Huayingjuhe> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    _dio.options.baseUrl = 'https://api2.huayingjuhe.com';
   }
 
   // void getBanner() async {
@@ -43,50 +44,87 @@ class _HuayingjuheState extends State<Huayingjuhe> {
 
   @override
   Widget build(BuildContext context) {
-    print(2);
-    // return Swiper(
-    //   itemBuilder: (BuildContext context, int index) {
-    //     return Image.asset(
-    //       'assets/images/lifecycle.jpg',
-    //       fit: BoxFit.fill,
-    //     );
-    //   },
-    //   itemCount: 3,
-    //   pagination: SwiperPagination(),
-    //   control: SwiperControl(),
-    // );
-    return FutureBuilder(
-      future: _dio.post(
-        'https://api2.huayingjuhe.com/news/get_banners',
-        data: {'site': 1},
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          Container(
+            height: 650.0,
+            child: FutureBuilder(
+              future: _dio.post(
+                '/news/get_banners',
+                data: {'site': 1},
+              ),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.done) {
+                  Response response = snapshot.data;
+                  if (snapshot.hasError) {
+                    return Text(snapshot.error.toString());
+                  }
+                  var bannerData = json.decode(response.data)['result'];
+                  return Swiper(
+                    itemBuilder: (BuildContext context, int index) {
+                      return Image.network(
+                        'https://ucs2.huayingjuhe.com' +
+                            bannerData[index]['url'],
+                        fit: BoxFit.fill,
+                      );
+                    },
+                    itemCount: bannerData == null ? 0 : bannerData.length,
+                    pagination: SwiperPagination(),
+                    control: SwiperControl(),
+                  );
+                }
+                return CircularProgressIndicator();
+              },
+            ),
+          ),
+          Padding(
+              padding: EdgeInsets.all(42.0),
+              child: Column(children: [
+                Image.asset('images/huayingjuhe/logo.png'),
+                Container(
+                  height: 100.0,
+                  alignment: Alignment.center,
+                  child: Text(
+                    '全国电影发行数据平台',
+                    style: TextStyle(fontSize: 42.0),
+                  ),
+                )
+              ])),
+          Container(
+            height: 300.0,
+            child: FutureBuilder(
+              future: _dio.post(
+                '/news/get_movies',
+                data: {'pagesize': 50},
+              ),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.done) {
+                  Response response = snapshot.data;
+                  if (snapshot.hasError) {
+                    return Text(snapshot.error.toString());
+                  }
+                  var bannerData = json.decode(response.data)['result']['data'];
+                  print(bannerData.length);
+                  return Swiper(
+                    itemBuilder: (BuildContext context, int index) {
+                      return Image.network(
+                        'https://ucs2.huayingjuhe.com' +
+                            bannerData[index]['poster'],
+                        fit: BoxFit.fill,
+                      );
+                    },
+                    itemCount: bannerData == null ? 0 : bannerData.length,
+                    pagination: SwiperPagination(),
+                    control: SwiperControl(),
+                  );
+                }
+                return CircularProgressIndicator();
+              },
+            ),
+          ),
+        ],
       ),
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.done) {
-          Response response = snapshot.data;
-          if (snapshot.hasError) {
-            return Text(snapshot.error.toString());
-          }
-          print(response);
-          var bannerData = json.decode(response.data)['result'];
-          print(bannerData.length);
-          return Swiper(
-            itemBuilder: (BuildContext context, int index) {
-              // return Image.asset(
-              //   'assets/images/lifecycle.jpg',
-              //   fit: BoxFit.fill,
-              // );
-              return Image.network(
-                'https://ucs2.huayingjuhe.com' + bannerData[index]['url'],
-                fit: BoxFit.fill,
-              );
-            },
-            itemCount: bannerData == null ? 0 : bannerData.length,
-            pagination: SwiperPagination(),
-            control: SwiperControl(),
-          );
-        }
-        return CircularProgressIndicator();
-      },
     );
   }
 }
