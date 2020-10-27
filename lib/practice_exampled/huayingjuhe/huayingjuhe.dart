@@ -93,44 +93,50 @@ class _HuayingjuheState extends State<Huayingjuhe> {
                 )
               ])),
           Container(
-            height: 300.0,
-            width: 1200.0,
-            child: FutureBuilder(
-              future: _dio.post(
-                '/news/get_movies',
-                data: {'pagesize': 50},
-              ),
-              builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.done) {
-                  Response response = snapshot.data;
-                  if (snapshot.hasError) {
-                    return Text(snapshot.error.toString());
-                  }
-                  var bannerData = json.decode(response.data)['result']['data'];
-                  print(bannerData.length);
-                  return Swiper(
-                    itemBuilder: (BuildContext context, int index) {
-                      return Image.network(
-                        'https://ucs2.huayingjuhe.com' +
-                            bannerData[index]['poster'],
-                        fit: BoxFit.fill,
-                      );
-                    },
-                    itemCount: bannerData == null ? 0 : bannerData.length,
-                    pagination: SwiperPagination(),
-                    control: SwiperControl(),
-                    viewportFraction: 0.2,
-                    scale: 0.7,
-                    // itemHeight: 300.0,
-                    // itemWidth: 250.0,
-                    // layout: SwiperLayout.TINDER,
-                    autoplay: true,
-                  );
-                }
-                return CircularProgressIndicator();
-              },
-            ),
-          ),
+              decoration: BoxDecoration(color: Colors.grey[100]),
+              child: Padding(
+                  padding: EdgeInsets.all(42.0),
+                  child: Container(
+                    height: 300.0,
+                    width: 1200.0,
+                    child: FutureBuilder(
+                      future: _dio.post(
+                        '/news/get_movies',
+                        data: {'pagesize': 50},
+                      ),
+                      builder: (context, snapshot) {
+                        if (snapshot.connectionState == ConnectionState.done) {
+                          Response response = snapshot.data;
+                          if (snapshot.hasError) {
+                            return Text(snapshot.error.toString());
+                          }
+                          var bannerData =
+                              json.decode(response.data)['result']['data'];
+                          print(bannerData.length);
+                          return Swiper(
+                            itemBuilder: (BuildContext context, int index) {
+                              return Image.network(
+                                'https://ucs2.huayingjuhe.com' +
+                                    bannerData[index]['poster'],
+                                fit: BoxFit.fill,
+                              );
+                            },
+                            itemCount:
+                                bannerData == null ? 0 : bannerData.length,
+                            pagination: SwiperPagination(),
+                            control: SwiperControl(),
+                            viewportFraction: 0.2,
+                            scale: 0.7,
+                            // itemHeight: 300.0,
+                            // itemWidth: 250.0,
+                            // layout: SwiperLayout.TINDER,
+                            autoplay: true,
+                          );
+                        }
+                        return CircularProgressIndicator();
+                      },
+                    ),
+                  ))),
           Padding(
               padding: EdgeInsets.all(42.0),
               child: Column(children: [
@@ -144,7 +150,7 @@ class _HuayingjuheState extends State<Huayingjuhe> {
                 ),
                 Center(
                     child: SizedBox(
-                  height: 500.0,
+                  height: 350.0,
                   width: 1000.0,
                   child: GridView(
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -185,13 +191,52 @@ class _HuayingjuheState extends State<Huayingjuhe> {
                               ),
                               Text(e['content'],
                                   style: TextStyle(
-                                      color: Colors.grey[400], fontSize: 12.0)),
+                                      color: Colors.grey[500], fontSize: 12.0)),
                             ],
                           ),
                         );
                       }).toList()),
                 ))
               ])),
+          Container(
+            decoration: BoxDecoration(color: Colors.blueGrey[800]),
+            child: Padding(
+                padding: EdgeInsets.all(42.0),
+                child: Column(children: [
+                  Container(
+                    alignment: Alignment.center,
+                    height: 30.0,
+                    child: Text(
+                      '微信公众号 huayingjuhe   联系邮箱 support@huayingjuhe.com',
+                      style: TextStyle(fontSize: 12.0, color: Colors.white),
+                    ),
+                  ),
+                  Container(
+                    alignment: Alignment.center,
+                    height: 30.0,
+                    child: Text(
+                      '客服电话 4001-600-300   客服时间 周一至周五 9:30 - 18:30，周末及节假日 12:00 - 16:00',
+                      style: TextStyle(fontSize: 12.0, color: Colors.white),
+                    ),
+                  ),
+                  Container(
+                    alignment: Alignment.center,
+                    height: 30.0,
+                    child: Text(
+                      'Copyright 2013 - 2018 北京华影聚合电影科技有限公司 All Rights Reserved',
+                      style: TextStyle(fontSize: 12.0, color: Colors.white),
+                    ),
+                  ),
+                  Container(
+                    alignment: Alignment.center,
+                    height: 50.0,
+                    child: Text(
+                      '京公网安备 11010802026718 号    |   京ICP备 15065858 号',
+                      style: TextStyle(fontSize: 12.0, color: Colors.white),
+                    ),
+                  ),
+                ])),
+          )
         ],
       ),
     );

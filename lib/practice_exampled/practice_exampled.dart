@@ -10,7 +10,7 @@ class PracticeExampledPage extends StatelessWidget {
     ),
     PracticeRoute(
       child: Huayingjuhe(),
-      title: '华影聚合',
+      title: '华影聚合(Web)',
     ),
   ];
   Widget build(BuildContext context) {
@@ -28,3 +28,7 @@ class PracticeExampledPage extends StatelessWidget {
     );
   }
 }
+
+// todo
+// 写一个package， 包含主页架构， siteinfo， 主题等。
+// 在 main.dart 里代替 Scaffold
