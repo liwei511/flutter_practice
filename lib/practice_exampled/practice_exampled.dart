@@ -1,17 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_practice/practice_exampled/modals/route.dart';
 import './index.dart';
-import './practice_route.dart';
 
 class PracticeExampledPage extends StatelessWidget {
-  final routes = [
-    PracticeRoute(
-      child: FiveInARowExampled(),
-      title: '五子棋(未完成)',
+  final List<RouteModal> routes = [
+    RouteModal(
+      '五子棋(未完成)',
+      FiveInARowExampled(),
     ),
-    PracticeRoute(
-      child: Huayingjuhe(),
-      title: '华影聚合(Web)',
+    RouteModal(
+      '华影聚合(Web)',
+      Huayingjuhe(),
     ),
+    // {
+    //   'child': Huayingjuhe(),
+    //   'title': '华影聚合(Web)',
+    // },
   ];
   Widget build(BuildContext context) {
     return ListView(
@@ -21,7 +25,7 @@ class PracticeExampledPage extends StatelessWidget {
                 title: Text(er.title),
                 onTap: () => Navigator.push(context,
                     MaterialPageRoute(builder: (context) {
-                  return er;
+                  return er.child;
                 })),
               ))
           .toList(),
