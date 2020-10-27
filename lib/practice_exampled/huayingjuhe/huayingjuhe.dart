@@ -94,6 +94,7 @@ class _HuayingjuheState extends State<Huayingjuhe> {
               ])),
           Container(
             height: 300.0,
+            width: 1200.0,
             child: FutureBuilder(
               future: _dio.post(
                 '/news/get_movies',
@@ -118,10 +119,11 @@ class _HuayingjuheState extends State<Huayingjuhe> {
                     itemCount: bannerData == null ? 0 : bannerData.length,
                     pagination: SwiperPagination(),
                     control: SwiperControl(),
-                    viewportFraction: 0.8,
-                    scale: 0.9,
-                    itemWidth: 250.0,
-                    layout: SwiperLayout.STACK,
+                    viewportFraction: 0.2,
+                    scale: 0.7,
+                    // itemHeight: 300.0,
+                    // itemWidth: 250.0,
+                    // layout: SwiperLayout.TINDER,
                     autoplay: true,
                   );
                 }
@@ -129,6 +131,67 @@ class _HuayingjuheState extends State<Huayingjuhe> {
               },
             ),
           ),
+          Padding(
+              padding: EdgeInsets.all(42.0),
+              child: Column(children: [
+                Container(
+                  height: 100.0,
+                  alignment: Alignment.center,
+                  child: Text(
+                    '了解我们的服务',
+                    style: TextStyle(fontSize: 42.0),
+                  ),
+                ),
+                Center(
+                    child: SizedBox(
+                  height: 500.0,
+                  width: 1000.0,
+                  child: GridView(
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 3,
+                        childAspectRatio: 1.0,
+                      ),
+                      children: [
+                        {
+                          'image': 'images/huayingjuhe/neirong.png',
+                          'title': '内容分发',
+                          'content': '密钥发布 | 硬盘递运 | 网络传输'
+                        },
+                        {
+                          'image': 'images/huayingjuhe/shujufenxi.png',
+                          'title': '数据分析',
+                          'content': '票房统计 | 票房结算 | 票房预测  档期评估 | 市场复盘'
+                        },
+                        {
+                          'image': 'images/huayingjuhe/mubanzhizuo.png',
+                          'title': '内容整合',
+                          'content': '母版制作 | 数字拷贝 | 媒资管理'
+                        },
+                      ].map((e) {
+                        return Container(
+                          width: 100.0,
+                          child: Column(
+                            children: [
+                              Image.asset(e['image']),
+                              Container(
+                                height: 60.0,
+                                alignment: Alignment.center,
+                                child: Text(
+                                  e['title'],
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 16.0),
+                                ),
+                              ),
+                              Text(e['content'],
+                                  style: TextStyle(
+                                      color: Colors.grey[400], fontSize: 12.0)),
+                            ],
+                          ),
+                        );
+                      }).toList()),
+                ))
+              ])),
         ],
       ),
     );
