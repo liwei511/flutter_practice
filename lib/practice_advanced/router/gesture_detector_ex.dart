@@ -62,7 +62,7 @@ class _GestureDetectorExampleState extends State<GestureDetectorExample> {
           ),
         ),
         GestureDetector(
-          child: Image.asset('./images/sliverappbar.jpg', width: _width),
+          child: Image.asset('assets/images/sliverappbar.jpg', width: _width),
           onScaleUpdate: (ScaleUpdateDetails e) {
             setState(() {
               _width = 200 * e.scale.clamp(.8, 10.0);

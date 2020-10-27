@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
@@ -24,6 +25,7 @@ class _HuayingjuheState extends State<Huayingjuhe> {
     // TODO: implement initState
     super.initState();
     _dio.options.baseUrl = 'https://api2.huayingjuhe.com';
+    print(defaultTargetPlatform); // 获取平台信息
   }
 
   // void getBanner() async {
@@ -44,6 +46,42 @@ class _HuayingjuheState extends State<Huayingjuhe> {
 
   @override
   Widget build(BuildContext context) {
+    List<Widget> serveWidget = [
+      {
+        'image': 'assets/images/huayingjuhe/neirong.png',
+        'title': '内容分发',
+        'content': '密钥发布 | 硬盘递运 | 网络传输'
+      },
+      {
+        'image': 'assets/images/huayingjuhe/shujufenxi.png',
+        'title': '数据分析',
+        'content': '票房统计 | 票房结算 | 票房预测  档期评估 | 市场复盘'
+      },
+      {
+        'image': 'assets/images/huayingjuhe/mubanzhizuo.png',
+        'title': '内容整合',
+        'content': '母版制作 | 数字拷贝 | 媒资管理'
+      },
+    ].map((e) {
+      return Container(
+        width: 100.0,
+        child: Column(
+          children: [
+            Image.asset(e['image']),
+            Container(
+              height: 60.0,
+              alignment: Alignment.center,
+              child: Text(
+                e['title'],
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0),
+              ),
+            ),
+            Text(e['content'],
+                style: TextStyle(color: Colors.grey[500], fontSize: 12.0)),
+          ],
+        ),
+      );
+    }).toList();
     return SingleChildScrollView(
       child: Column(
         children: [
@@ -82,7 +120,7 @@ class _HuayingjuheState extends State<Huayingjuhe> {
           Padding(
               padding: EdgeInsets.all(42.0),
               child: Column(children: [
-                Image.asset('images/huayingjuhe/logo.png'),
+                Image.asset('assets/images/huayingjuhe/logo.png'),
                 Container(
                   height: 100.0,
                   alignment: Alignment.center,
@@ -125,7 +163,11 @@ class _HuayingjuheState extends State<Huayingjuhe> {
                                 bannerData == null ? 0 : bannerData.length,
                             pagination: SwiperPagination(),
                             control: SwiperControl(),
-                            viewportFraction: 0.2,
+                            viewportFraction: defaultTargetPlatform ==
+                                        TargetPlatform.android ||
+                                    defaultTargetPlatform == TargetPlatform.iOS
+                                ? 0.8
+                                : 0.2,
                             scale: 0.7,
                             // itemHeight: 300.0,
                             // itemWidth: 250.0,
@@ -152,50 +194,10 @@ class _HuayingjuheState extends State<Huayingjuhe> {
                     child: SizedBox(
                   height: 350.0,
                   width: 1000.0,
-                  child: GridView(
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 3,
-                        childAspectRatio: 1.0,
-                      ),
-                      children: [
-                        {
-                          'image': 'images/huayingjuhe/neirong.png',
-                          'title': '内容分发',
-                          'content': '密钥发布 | 硬盘递运 | 网络传输'
-                        },
-                        {
-                          'image': 'images/huayingjuhe/shujufenxi.png',
-                          'title': '数据分析',
-                          'content': '票房统计 | 票房结算 | 票房预测  档期评估 | 市场复盘'
-                        },
-                        {
-                          'image': 'images/huayingjuhe/mubanzhizuo.png',
-                          'title': '内容整合',
-                          'content': '母版制作 | 数字拷贝 | 媒资管理'
-                        },
-                      ].map((e) {
-                        return Container(
-                          width: 100.0,
-                          child: Column(
-                            children: [
-                              Image.asset(e['image']),
-                              Container(
-                                height: 60.0,
-                                alignment: Alignment.center,
-                                child: Text(
-                                  e['title'],
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 16.0),
-                                ),
-                              ),
-                              Text(e['content'],
-                                  style: TextStyle(
-                                      color: Colors.grey[500], fontSize: 12.0)),
-                            ],
-                          ),
-                        );
-                      }).toList()),
+                  child: defaultTargetPlatform == TargetPlatform.android ||
+                          defaultTargetPlatform == TargetPlatform.iOS
+                      ? Column(children: serveWidget)
+                      : Row(children: serveWidget),
                 ))
               ])),
           Container(
@@ -208,6 +210,7 @@ class _HuayingjuheState extends State<Huayingjuhe> {
                     height: 30.0,
                     child: Text(
                       '微信公众号 huayingjuhe   联系邮箱 support@huayingjuhe.com',
+                      textAlign: TextAlign.center,
                       style: TextStyle(fontSize: 12.0, color: Colors.white),
                     ),
                   ),
@@ -216,6 +219,7 @@ class _HuayingjuheState extends State<Huayingjuhe> {
                     height: 30.0,
                     child: Text(
                       '客服电话 4001-600-300   客服时间 周一至周五 9:30 - 18:30，周末及节假日 12:00 - 16:00',
+                      textAlign: TextAlign.center,
                       style: TextStyle(fontSize: 12.0, color: Colors.white),
                     ),
                   ),
@@ -224,6 +228,7 @@ class _HuayingjuheState extends State<Huayingjuhe> {
                     height: 30.0,
                     child: Text(
                       'Copyright 2013 - 2018 北京华影聚合电影科技有限公司 All Rights Reserved',
+                      textAlign: TextAlign.center,
                       style: TextStyle(fontSize: 12.0, color: Colors.white),
                     ),
                   ),
@@ -232,6 +237,7 @@ class _HuayingjuheState extends State<Huayingjuhe> {
                     height: 50.0,
                     child: Text(
                       '京公网安备 11010802026718 号    |   京ICP备 15065858 号',
+                      textAlign: TextAlign.center,
                       style: TextStyle(fontSize: 12.0, color: Colors.white),
                     ),
                   ),

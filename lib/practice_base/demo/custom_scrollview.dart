@@ -23,7 +23,7 @@ class CustomScrollViewDemo extends StatelessWidget {
             flexibleSpace: FlexibleSpaceBar(
               title: Text(title),
               background: Image.asset(
-                './images/sliverappbar.jpg',
+                'assets/images/sliverappbar.jpg',
                 fit: BoxFit.cover,
               ),
             ),

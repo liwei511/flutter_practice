@@ -48,7 +48,7 @@ class _AnimationCurvedExampleState extends State<AnimationCurvedExample>
         ),
         Center(
           child: Image.asset(
-            './images/sliverappbar.jpg',
+            'assets/images/sliverappbar.jpg',
             width: _animation.value,
             height: _animation.value,
           ),

@@ -11,7 +11,7 @@ class AnimationHeroExample extends StatelessWidget {
         child: Hero(
           tag: 'avatar',
           child: ClipOval(
-            child: Image.asset('./images/sliverappbar.jpg', width: 50.0),
+            child: Image.asset('assets/images/sliverappbar.jpg', width: 50.0),
           ),
         ),
         onTap: () => Navigator.push(context, PageRouteBuilder(pageBuilder:
@@ -39,7 +39,7 @@ class HeroAnimationRouteB extends StatelessWidget {
     return Center(
       child: Hero(
         tag: 'avatar',
-        child: Image.asset('./images/sliverappbar.jpg'),
+        child: Image.asset('assets/images/sliverappbar.jpg'),
       ),
     );
   }

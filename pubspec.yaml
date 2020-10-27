@@ -32,6 +32,7 @@ dependencies:
   random_words: ^1.0.2
   path_provider: ^1.6.21 # 文件操作 不兼容web
   dio: ^3.0.10
+  webview_flutter: ^1.0.5
 
 dev_dependencies:
   flutter_test:
@@ -56,9 +57,22 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  assets:
+  assets: # for android & IOS
     - assets/images/350x150.png
     - assets/images/lifecycle.jpg
+    - assets/images/18389869.png
+    - assets/images/sliverappbar.jpg
+    - assets/images/huayingjuhe/beian.png
+    - assets/images/huayingjuhe/browser.png
+    - assets/images/huayingjuhe/huayingjuhe.png
+    - assets/images/huayingjuhe/login.jpg
+    - assets/images/huayingjuhe/logo.png
+    - assets/images/huayingjuhe/mubanzhizuo.png
+    - assets/images/huayingjuhe/neirong.png
+    - assets/images/huayingjuhe/online.png
+    - assets/images/huayingjuhe/piaofangjiesuan.png
+    - assets/images/huayingjuhe/shujufenxi.png
+    - assets/images/huayingjuhe/weixin.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

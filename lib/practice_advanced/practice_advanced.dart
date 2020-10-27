@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_practice/practice_advanced/router/custom_gradient_arc_ex.dart';
 import 'package:flutter_practice/practice_advanced/router/dio_ex.dart';
 import 'package:flutter_practice/practice_advanced/router/http_ex.dart';
+import 'package:flutter_practice/practice_advanced/router/platform_view_ex.dart';
 import 'router/animation_decorated_ex.dart';
 import 'router/animation_hero_example.dart';
 import 'router/animation_stagger_ex.dart';
@@ -118,7 +119,12 @@ List<MyRouteGroup> myAppAdvancedRoutes = [
       groupName: '包和插件',
       icon: Icon(Icons.backpack),
       isExpanded: false,
-      routes: <MyRoute>[]),
+      routes: <MyRoute>[
+        MyRoute(
+          child: PlatformViewExample(),
+          title: 'WebView',
+        )
+      ]),
   MyRouteGroup(
       groupName: '国际化',
       icon: Icon(Icons.local_airport),
