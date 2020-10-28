@@ -59,7 +59,6 @@ class _AnimationCurvedExampleState extends State<AnimationCurvedExample>
 
   @override
   void dispose() {
-    // TODO: implement dispose
     _controller.dispose();
     super.dispose();
   }

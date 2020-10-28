@@ -23,7 +23,6 @@ class _HuayingjuheState extends State<Huayingjuhe> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _dio.options.baseUrl = 'https://api2.huayingjuhe.com';
     // print(defaultTargetPlatform); // 获取平台信息

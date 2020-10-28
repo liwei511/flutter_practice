@@ -9,8 +9,11 @@ part of 'user.dart';
 User _$UserFromJson(Map<String, dynamic> json) {
   return User()
     ..login = json['login'] as String
+    ..id = json['id'] as num
     ..avatar_url = json['avatar_url'] as String
+    ..url = json['url'] as String
     ..type = json['type'] as String
+    ..site_admin = json['site_admin'] as bool
     ..name = json['name'] as String
     ..company = json['company'] as String
     ..blog = json['blog'] as String
@@ -19,6 +22,7 @@ User _$UserFromJson(Map<String, dynamic> json) {
     ..hireable = json['hireable'] as bool
     ..bio = json['bio'] as String
     ..public_repos = json['public_repos'] as num
+    ..public_gists = json['public_gists'] as num
     ..followers = json['followers'] as num
     ..following = json['following'] as num
     ..created_at = json['created_at'] as String
@@ -29,8 +33,11 @@ User _$UserFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
       'login': instance.login,
+      'id': instance.id,
       'avatar_url': instance.avatar_url,
+      'url': instance.url,
       'type': instance.type,
+      'site_admin': instance.site_admin,
       'name': instance.name,
       'company': instance.company,
       'blog': instance.blog,
@@ -39,6 +46,7 @@ Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
       'hireable': instance.hireable,
       'bio': instance.bio,
       'public_repos': instance.public_repos,
+      'public_gists': instance.public_gists,
       'followers': instance.followers,
       'following': instance.following,
       'created_at': instance.created_at,

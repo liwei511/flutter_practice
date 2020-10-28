@@ -35,6 +35,4 @@ class PracticeExampledPage extends StatelessWidget {
   }
 }
 
-// todo
-// 写一个package， 包含主页架构， siteinfo， 主题等。
-// 在 main.dart 里代替 Scaffold
+// TODO:  写一个package， 包含主页架构， siteinfo， 主题等。在 main.dart 里代替 Scaffold

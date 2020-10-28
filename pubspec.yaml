@@ -24,7 +24,8 @@ dependencies:
   flutter:
     sdk: flutter
 
-
+  flutter_localizations:
+    sdk: flutter
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.0
@@ -33,17 +34,22 @@ dependencies:
   path_provider: ^1.6.21 # 文件操作 不兼容web
   dio: ^3.0.10
   webview_flutter: ^1.0.5
-  # flutter packages pub run json_model
-  # flutter packages pub run build_runner build
-  json_model: ^0.0.2 # json 生成bodel 1
-  build_runner: ^1.0.0 # 自动构建代码 2
-  json_serializable: ^2.0.0 # 序列化 3
+  provider: ^3.0.0+1
+  shared_preferences: ^0.5.1+1
+  cached_network_image: ^2.0.0
+  fluttertoast: ^3.0.3
+  flukit: ^1.0.2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
   flutter_launcher_icons: "^0.8.1"
+  # flutter packages pub run json_model
+  # # flutter packages pub run build_runner build
+  json_model: ^0.0.2 # json 生成bodel 1
+  build_runner: ^1.0.0 # 自动构建代码 2
+  json_serializable: ^2.0.0 # 序列化 3
 
 flutter_icons:
   android: "launcher_icon"
@@ -78,6 +84,9 @@ flutter:
     - assets/images/huayingjuhe/piaofangjiesuan.png
     - assets/images/huayingjuhe/shujufenxi.png
     - assets/images/huayingjuhe/weixin.png
+    - assets/github_client/avatar-default.png
+    - assets/github_client/logo_light.png
+    - assets/github_client/logo_dark.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
@@ -104,3 +113,7 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+  fonts:
+    - family: myIcon
+      fonts:
+        - asset: fonts/iconfont.ttf
