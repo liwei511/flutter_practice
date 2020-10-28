@@ -8,3 +8,19 @@
  * 
  * jsons 用于保存Json文件, 可以放到lib外
  */
+
+import 'package:flutter/material.dart';
+
+class GithubClient extends StatelessWidget {
+  const GithubClient({Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Github客户端'),
+        actions: [],
+      ),
+    );
+  }
+}

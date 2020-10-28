@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_practice/practice_exampled/github_client/github_client.dart';
 import 'package:flutter_practice/practice_exampled/modals/route.dart';
 import './index.dart';
 
@@ -12,6 +13,7 @@ class PracticeExampledPage extends StatelessWidget {
       '华影聚合(Web)',
       Huayingjuhe(),
     ),
+    RouteModal('github 客户端', GithubClient())
     // {
     //   'child': Huayingjuhe(),
     //   'title': '华影聚合(Web)',
