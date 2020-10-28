@@ -27,7 +27,7 @@ class MyPainter extends CustomPainter {
     double eHeight = size.height / 15;
 
     //画棋盘背景
-    var paint = Paint()
+    Paint paint = Paint()
       ..isAntiAlias = true
       ..style = PaintingStyle.fill //填充
       ..color = Color(0x77cdb175); //背景为纸黄色

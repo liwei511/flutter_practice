@@ -44,7 +44,7 @@ class GradientCircularProgressIndicator extends StatelessWidget {
     if (strokeCapRound) {
       _offset = asin(strokeWidth / (radius * 2 - strokeWidth));
     }
-    var _colors = colors;
+    List<Color> _colors = colors;
     if (_colors == null) {
       Color color = Theme.of(context).accentColor;
       _colors = [color, color];
@@ -104,7 +104,7 @@ class _GradientCircularProgressPainter extends CustomPainter {
     Rect rect = Offset(_offset, _offset) &
         Size(size.width - strokeWidth, size.height - strokeWidth);
 
-    var paint = Paint()
+    Paint paint = Paint()
       ..strokeCap = strokeCapRound ? StrokeCap.round : StrokeCap.butt
       ..style = PaintingStyle.stroke
       ..isAntiAlias = true

@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -16,16 +15,18 @@ class Huayingjuhe extends StatefulWidget {
 class _HuayingjuheState extends State<Huayingjuhe> {
   Dio _dio = new Dio();
 
+  bool isLogin = false;
+
   // Response response;
 
-  // List<dynamic> bannerData;
+  // List<dynamic> bannerList;
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     _dio.options.baseUrl = 'https://api2.huayingjuhe.com';
-    print(defaultTargetPlatform); // 获取平台信息
+    // print(defaultTargetPlatform); // 获取平台信息
   }
 
   // void getBanner() async {
@@ -35,7 +36,7 @@ class _HuayingjuheState extends State<Huayingjuhe> {
   //     data: {'site': 1},
   //   );
   //   setState(() {
-  //     bannerData = json.decode(response.data)['result'];
+  //     bannerList = json.decode(response.data)['result'];
   //   });
   // }
 
@@ -77,27 +78,74 @@ class _HuayingjuheState extends State<Huayingjuhe> {
         ),
       );
     }).toList();
-    return Scaffold(
-        appBar: AppBar(
-          title: Image.asset('assets/images/huayingjuhe/huayingjuhe.png'),
-          actions: [
+
+    List<Widget> _actions = [
+      FlatButton.icon(
+        label: Text('使用帮助'),
+        icon: Icon(Icons.help),
+        onPressed: () {},
+      ),
+      FlatButton.icon(
+        label: Text('公众号'),
+        icon: Icon(Icons.qr_code_scanner),
+        onPressed: () {},
+      ),
+    ];
+
+    _actions.addAll(isLogin
+        ? [
             FlatButton.icon(
-              label: Text('使用帮助'),
-              icon: Icon(Icons.help),
-              onPressed: () {},
-            ),
-            FlatButton.icon(
-              label: Text('公众号'),
+              label: Text('控制台'),
               icon: Icon(Icons.qr_code_scanner),
               onPressed: () {},
             ),
+            PopupMenuButton(
+              child: FlatButton.icon(
+                color: Colors.black,
+                label: Text('用户名'),
+                icon: Icon(Icons.person),
+                onPressed: null,
+              ),
+              // icon: Icon(Icons.person),
+              itemBuilder: (context) => [
+                PopupMenuItem(
+                  child: Text('设置密码'),
+                  value: 0,
+                ),
+                PopupMenuItem(
+                  child: Text('退出登录'),
+                  value: 1,
+                ),
+              ],
+              onSelected: (result) {
+                if (result == 0) {
+                  // 设置密码页
+                } else {
+                  // 退出登录
+                  setState(() {
+                    isLogin = false;
+                  });
+                }
+              },
+              tooltip: null,
+            ),
+          ]
+        : [
             FlatButton.icon(
               label: Text('登录'),
               icon: Icon(Icons.login),
-              onPressed: () {},
+              onPressed: () {
+                setState(() {
+                  isLogin = true;
+                });
+              },
             ),
-          ],
-        ),
+          ]);
+    return Scaffold(
+        appBar: AppBar(
+            backgroundColor: Colors.white,
+            title: Image.asset('assets/images/huayingjuhe/huayingjuhe.png'),
+            actions: _actions),
         body: SingleChildScrollView(
           child: Column(
             children: [
@@ -117,7 +165,7 @@ class _HuayingjuheState extends State<Huayingjuhe> {
                       if (snapshot.hasError) {
                         return Text(snapshot.error.toString());
                       }
-                      var bannerData = json.decode(response.data)['result'];
+                      List bannerList = json.decode(response.data)['result'];
                       return Swiper(
                         itemBuilder: (BuildContext context, int index) {
                           return Container(
@@ -125,11 +173,11 @@ class _HuayingjuheState extends State<Huayingjuhe> {
                                   aspectRatio: 4.0 / 3.0,
                                   child: Image.network(
                                     'https://ucs2.huayingjuhe.com' +
-                                        bannerData[index]['url'],
+                                        bannerList[index]['url'],
                                     fit: BoxFit.cover,
                                   )));
                         },
-                        itemCount: bannerData == null ? 0 : bannerData.length,
+                        itemCount: bannerList == null ? 0 : bannerList.length,
                         pagination: SwiperPagination(),
                         control: SwiperControl(),
                         autoplay: true,
@@ -171,9 +219,8 @@ class _HuayingjuheState extends State<Huayingjuhe> {
                               if (snapshot.hasError) {
                                 return Text(snapshot.error.toString());
                               }
-                              var bannerData =
+                              List movieList =
                                   json.decode(response.data)['result']['data'];
-                              print(bannerData.length);
                               return Swiper(
                                 itemBuilder: (BuildContext context, int index) {
                                   return Container(
@@ -183,12 +230,12 @@ class _HuayingjuheState extends State<Huayingjuhe> {
                                           aspectRatio: 4.0 / 3.0,
                                           child: Image.network(
                                             'https://ucs2.huayingjuhe.com' +
-                                                bannerData[index]['poster'],
+                                                movieList[index]['poster'],
                                             fit: BoxFit.cover,
                                           )));
                                 },
                                 itemCount:
-                                    bannerData == null ? 0 : bannerData.length,
+                                    movieList == null ? 0 : movieList.length,
                                 pagination: SwiperPagination(),
                                 control: SwiperControl(),
                                 viewportFraction: defaultTargetPlatform ==

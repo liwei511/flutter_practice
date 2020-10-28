@@ -20,7 +20,7 @@ class _AnimationDecoratedExampleState extends State<AnimationDecoratedExample> {
 
   @override
   Widget build(BuildContext context) {
-    var duration = Duration(seconds: 2);
+    Duration duration = Duration(seconds: 2);
     return SingleChildScrollView(
       child: Column(
         children: [

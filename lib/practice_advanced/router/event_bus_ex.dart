@@ -8,7 +8,7 @@ class EventBusExample extends StatefulWidget {
 }
 
 class _EventBusExampleState extends State<EventBusExample> {
-  var bus = new EventBus();
+  EventBus bus = new EventBus();
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -93,7 +93,7 @@ class EventBus {
   factory EventBus() => _singleton;
 
   // 保存事件订阅队列， key是事件名（id）， value是对应事件的订阅者队列
-  var _emap = new Map<Object, List<EventCallback>>();
+  Map _emap = new Map<Object, List<EventCallback>>();
 
   // 添加订阅者
   void on(eventName, [EventCallback f]) {
@@ -104,7 +104,7 @@ class EventBus {
 
   // 移除订阅者
   void off(eventName, [EventCallback f]) {
-    var list = _emap[eventName];
+    List list = _emap[eventName];
     if (eventName == null || list == null) return;
     if (f == null) {
       _emap[eventName] = null;
@@ -115,10 +115,10 @@ class EventBus {
 
   // 触发事件， 事件触发后该事件所有订阅者会被调用
   void emit(eventName, [arg]) {
-    var list = _emap[eventName];
+    List list = _emap[eventName];
     if (list == null) return;
     int len = list.length - 1;
-    for (var i = len; i >= 0; --i) {
+    for (int i = len; i >= 0; --i) {
       list[i](arg);
     }
   }
