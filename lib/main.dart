@@ -54,12 +54,6 @@ class MyHomePageState extends State<MyHomePage>
   }
 
   Widget build(BuildContext context) {
-    var one = [1, 2, 3];
-    var two = [3, 4, 5];
-    var item = one + two;
-    one.addAll(true ? two : one);
-    print(one);
-    print(item);
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),

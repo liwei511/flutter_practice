@@ -1,6 +1,9 @@
+// import 'package:flutter/material.dart';
 import '../index.dart';
 
 class LoginRoute extends StatefulWidget {
+  LoginRoute({Key key}) : super(key: key);
+
   @override
   _LoginRouteState createState() => _LoginRouteState();
 }
@@ -8,13 +11,12 @@ class LoginRoute extends StatefulWidget {
 class _LoginRouteState extends State<LoginRoute> {
   TextEditingController _unameController = new TextEditingController();
   TextEditingController _pwdController = new TextEditingController();
-  bool pwdShow = false;
+  bool pwdShow = false; // 是否显示密码
   GlobalKey _formKey = new GlobalKey<FormState>();
   bool _nameAutoFocus = true;
 
   @override
   void initState() {
-    // 自动填充上次登录的用户名，填充后将焦点定位到密码输入框
     _unameController.text = Global.profile.lastLogin;
     if (_unameController.text != null) {
       _nameAutoFocus = false;
@@ -24,34 +26,35 @@ class _LoginRouteState extends State<LoginRoute> {
 
   @override
   Widget build(BuildContext context) {
-    var gm = GmLocalizations.of(context);
     return Scaffold(
-      appBar: AppBar(title: Text(gm.login)),
+      appBar: AppBar(
+        title: Text('登录'),
+      ),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: EdgeInsets.all(16.0),
         child: Form(
           key: _formKey,
-          autovalidate: true,
+          autovalidateMode: AutovalidateMode.always,
           child: Column(
             children: <Widget>[
               TextFormField(
-                  autofocus: _nameAutoFocus,
-                  controller: _unameController,
-                  decoration: InputDecoration(
-                    labelText: gm.userName,
-                    hintText: gm.userName,
-                    prefixIcon: Icon(Icons.person),
-                  ),
-                  // 校验用户名（不能为空）
-                  validator: (v) {
-                    return v.trim().isNotEmpty ? null : gm.userNameRequired;
-                  }),
-              TextFormField(
-                controller: _pwdController,
-                autofocus: !_nameAutoFocus,
+                autofocus: _nameAutoFocus,
+                controller: _unameController,
                 decoration: InputDecoration(
-                    labelText: gm.password,
-                    hintText: gm.password,
+                  labelText: '用户名',
+                  hintText: '用户名',
+                  prefixIcon: Icon(Icons.person),
+                ),
+                validator: (value) {
+                  return value.trim().isNotEmpty ? null : '请填用户名';
+                },
+              ),
+              TextFormField(
+                autofocus: !_nameAutoFocus,
+                controller: _pwdController,
+                decoration: InputDecoration(
+                    labelText: '密码',
+                    hintText: '密码',
                     prefixIcon: Icon(Icons.lock),
                     suffixIcon: IconButton(
                       icon: Icon(
@@ -63,23 +66,22 @@ class _LoginRouteState extends State<LoginRoute> {
                       },
                     )),
                 obscureText: !pwdShow,
-                //校验密码（不能为空）
-                validator: (v) {
-                  return v.trim().isNotEmpty ? null : gm.passwordRequired;
+                validator: (value) {
+                  return value.trim().isNotEmpty ? null : '请填密码';
                 },
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 25),
+                padding: EdgeInsets.only(top: 25),
                 child: ConstrainedBox(
                   constraints: BoxConstraints.expand(height: 55.0),
                   child: RaisedButton(
+                    child: Text('登录'),
                     color: Theme.of(context).primaryColor,
-                    onPressed: _onLogin,
                     textColor: Colors.white,
-                    child: Text(gm.login),
+                    onPressed: _onLogin,
                   ),
                 ),
-              ),
+              )
             ],
           ),
         ),
@@ -88,36 +90,21 @@ class _LoginRouteState extends State<LoginRoute> {
   }
 
   void _onLogin() async {
-    // 先验证各个表单字段是否合法
+    // 验证表单是否合法
     if ((_formKey.currentState as FormState).validate()) {
-      // showLoading(context);
       User user;
       try {
-        user = await Git(context)
-            .login(_unameController.text, _pwdController.text);
-        // 因为登录页返回后，首页会build，所以我们传false，更新user后不触发更新
+        // 假装登录了
+        user = User.fromJson({'login': _unameController.text});
         Provider.of<UserModel>(context, listen: false).user = user;
-        print(1);
       } catch (e) {
-        //登录失败则提示
-        // 报错 no response
-        // if (e.response?.statusCode == 401) {
-        //   showToast(GmLocalizations.of(context).userNameOrPasswordWrong);
-        // } else {
-        //   showToast(e.toString());
-        // }
-        print(e);
-        print(2);
+        // 登录失败
       } finally {
-        // 隐藏loading框
-        // Navigator.of(context).pop();
-        print(3);
+        // 关闭loading框
       }
       if (user != null) {
-        // 从登录页返回到首页
+        // 返回首页
         Navigator.of(context).pop();
-        // 这里路由有问题， 并没有跳到首页
-        print(4);
       }
     }
   }
