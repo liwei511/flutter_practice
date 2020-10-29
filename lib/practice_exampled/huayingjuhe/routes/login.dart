@@ -96,7 +96,8 @@ class _LoginRouteState extends State<LoginRoute> {
       try {
         // 假装登录了
         user = User.fromJson({'login': _unameController.text});
-        Provider.of<UserModel>(context, listen: false).user = user;
+        print(user);
+        Provider.of<UserModel>(context, listen: true).user = user;
       } catch (e) {
         // 登录失败
       } finally {

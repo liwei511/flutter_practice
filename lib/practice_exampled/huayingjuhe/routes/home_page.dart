@@ -15,16 +15,30 @@ class HomeRoute extends StatefulWidget {
 class _HomeRouteState extends State<HomeRoute> {
   Dio _dio = new Dio();
 
-  bool isLogin = false;
+  bool isPhone = defaultTargetPlatform == TargetPlatform.android ||
+      defaultTargetPlatform == TargetPlatform.iOS;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(
+    BuildContext context,
+  ) {
+    UserModel userModel = Provider.of<UserModel>(context);
+
     _dio.options.baseUrl = 'https://api2.huayingjuhe.com';
+
+    return Scaffold(appBar: _buildAppbar(), body: _buildBody());
+  }
+
+  Widget _buildAppbar() {
+    UserModel userModel = Provider.of<UserModel>(context);
     List<Widget> _actions = [
       FlatButton.icon(
         label: Text('使用帮助'),
         icon: Icon(Icons.help),
-        onPressed: () {},
+        onPressed: () {
+          print(userModel.user?.toString());
+          print(userModel.user?.login);
+        },
       ),
       FlatButton.icon(
         label: Text('公众号'),
@@ -33,7 +47,7 @@ class _HomeRouteState extends State<HomeRoute> {
       ),
     ];
 
-    _actions.addAll(isLogin
+    _actions.addAll(userModel.isLogin
         ? [
             FlatButton.icon(
               label: Text('控制台'),
@@ -43,7 +57,8 @@ class _HomeRouteState extends State<HomeRoute> {
             PopupMenuButton(
               child: FlatButton.icon(
                 color: Colors.black,
-                label: Text('用户名'),
+                label: Text(
+                    userModel.user == null ? '用户名' : (userModel.user?.login)),
                 icon: Icon(Icons.person),
                 onPressed: null,
               ),
@@ -64,7 +79,7 @@ class _HomeRouteState extends State<HomeRoute> {
                 } else {
                   // 退出登录
                   setState(() {
-                    isLogin = false;
+                    userModel.user = null;
                   });
                 }
               },
@@ -77,18 +92,13 @@ class _HomeRouteState extends State<HomeRoute> {
               icon: Icon(Icons.login),
               onPressed: () {
                 Navigator.of(context).pushNamed('login');
-                // setState(() {
-                //   isLogin = true;
-                // });
               },
             ),
           ]);
-    return Scaffold(
-        appBar: AppBar(
-            backgroundColor: Colors.white,
-            title: Image.asset('assets/images/huayingjuhe/huayingjuhe.png'),
-            actions: _actions),
-        body: _buildBody());
+    return AppBar(
+        backgroundColor: Colors.white,
+        title: Image.asset('assets/images/huayingjuhe/huayingjuhe.png'),
+        actions: _actions);
   }
 
   Widget _buildBody() {
@@ -134,10 +144,7 @@ class _HomeRouteState extends State<HomeRoute> {
         children: [
           Container(
             // 放到。。里
-            height: defaultTargetPlatform == TargetPlatform.android ||
-                    defaultTargetPlatform == TargetPlatform.iOS
-                ? 200.0
-                : 650.0,
+            height: isPhone ? 200.0 : 650.0,
             child: FutureBuilder(
               future: _dio.post(
                 '/news/get_banners',
@@ -220,11 +227,7 @@ class _HomeRouteState extends State<HomeRoute> {
                             itemCount: movieList == null ? 0 : movieList.length,
                             pagination: SwiperPagination(),
                             control: SwiperControl(),
-                            viewportFraction: defaultTargetPlatform ==
-                                        TargetPlatform.android ||
-                                    defaultTargetPlatform == TargetPlatform.iOS
-                                ? 0.8
-                                : 0.2,
+                            viewportFraction: isPhone ? 0.8 : 0.2,
                             scale: 0.7,
                             // itemHeight: 300.0,
                             // itemWidth: 250.0,
@@ -251,8 +254,7 @@ class _HomeRouteState extends State<HomeRoute> {
                     child: SizedBox(
                   height: 300.0,
                   width: 1000.0,
-                  child: defaultTargetPlatform == TargetPlatform.android ||
-                          defaultTargetPlatform == TargetPlatform.iOS
+                  child: isPhone
                       ? Column(
                           children: serveWidget,
                           crossAxisAlignment: CrossAxisAlignment.center,
@@ -309,5 +311,11 @@ class _HomeRouteState extends State<HomeRoute> {
         ],
       ),
     );
+  }
+
+  @override
+  void didChangeDependencies() {
+    print('状态更新了');
+    super.didChangeDependencies();
   }
 }

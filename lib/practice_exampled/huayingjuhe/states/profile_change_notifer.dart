@@ -15,10 +15,12 @@ class UserModel extends ProfileChangeNotifier {
 
   // 若用户信息变更， 通知刷新
   set user(User user) {
+    print('user change');
     if (user.login != _profile.user?.login) {
+      print('no change');
       _profile.lastLogin = _profile.user?.login;
       _profile.user = user;
-      notifyListeners();
+      notifyListeners(); // 触发所有监听器回调。
     }
   }
 }

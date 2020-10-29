@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_practice/practice_advanced/router/cart/cart_ex.dart';
 import 'package:flutter_practice/practice_advanced/router/custom_gradient_arc_ex.dart';
 import 'package:flutter_practice/practice_advanced/router/dio_ex.dart';
 import 'package:flutter_practice/practice_advanced/router/http_ex.dart';
@@ -37,6 +38,16 @@ class MyRouteGroup {
 }
 
 List<MyRouteGroup> myAppAdvancedRoutes = [
+  MyRouteGroup(
+      groupName: '状态共享',
+      icon: Icon(Icons.system_update_alt),
+      isExpanded: false,
+      routes: <MyRoute>[
+        MyRoute(
+          child: CartExample(),
+          title: '跨组件状态共享-购物车示例',
+        ),
+      ]),
   MyRouteGroup(
       groupName: '事件处理与通知',
       icon: Icon(Icons.drag_handle),
