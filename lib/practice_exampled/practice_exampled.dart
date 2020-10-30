@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_practice/practice_exampled/github_client/github_client.dart';
 import 'package:flutter_practice/practice_exampled/modals/route.dart';
+import 'package:flutter_practice/practice_exampled/tic_tac_toe/tic_tac_toe.dart';
 import './index.dart';
 
 class PracticeExampledPage extends StatelessWidget {
@@ -13,7 +14,8 @@ class PracticeExampledPage extends StatelessWidget {
       '华影聚合(Web)',
       Huayingjuhe(),
     ),
-    RouteModal('github 客户端', GithubClient())
+    RouteModal('github 客户端', GithubClient()),
+    RouteModal('井字棋', TicTacToe())
     // {
     //   'child': Huayingjuhe(),
     //   'title': '华影聚合(Web)',
