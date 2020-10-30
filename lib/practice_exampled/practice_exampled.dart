@@ -7,19 +7,15 @@ import './index.dart';
 class PracticeExampledPage extends StatelessWidget {
   final List<RouteModal> routes = [
     RouteModal(
-      '五子棋(未完成)',
-      FiveInARowExampled(),
-    ),
-    RouteModal(
       '华影聚合(Web)',
       Huayingjuhe(),
     ),
     RouteModal('github 客户端', GithubClient()),
-    RouteModal('井字棋', TicTacToe())
-    // {
-    //   'child': Huayingjuhe(),
-    //   'title': '华影聚合(Web)',
-    // },
+    RouteModal('井字棋', TicTacToe()),
+    RouteModal(
+      '五子棋(未完成)',
+      FiveInARowExampled(),
+    ),
   ];
   Widget build(BuildContext context) {
     return ListView(

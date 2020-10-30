@@ -8,30 +8,31 @@ class TicTacToe extends StatefulWidget {
 }
 
 class _TicTacToeState extends State<TicTacToe> {
-  List<String> squares = [
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-  ];
-  bool xIsNext = true;
-  String status = 'X先走';
-  String winner = null;
+  List<String> squares;
+
+  List<List<String>> history;
+  bool xIsNext;
+  String status;
+  String winner;
+  @override
+  void initState() {
+    initGame();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
           actions: [
             FlatButton.icon(
-              label: Text('重新开始'),
+              label: Text('重玩'),
               icon: Icon(Icons.repeat),
               onPressed: () {
                 // 重新开始
+                setState(() {
+                  initGame();
+                });
               },
             ),
             FlatButton.icon(
@@ -39,6 +40,7 @@ class _TicTacToeState extends State<TicTacToe> {
               icon: Icon(Icons.arrow_back),
               onPressed: () {
                 // 回退
+                goBack();
               },
             ),
           ],
@@ -75,6 +77,7 @@ class _TicTacToeState extends State<TicTacToe> {
                                 } else {
                                   status = '轮到${xIsNext ? 'X' : 'O'}了';
                                 }
+                                history.add([...squares]);
                               });
                             }
                           },
@@ -109,5 +112,35 @@ class _TicTacToeState extends State<TicTacToe> {
       }
     }
     return null;
+  }
+
+  goBack() {
+    if (history.length > 1) {
+      setState(() {
+        history.removeLast();
+        squares = [...history.last];
+      });
+    }
+  }
+
+  initGame() {
+    squares = [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+    ];
+
+    history = [
+      [...squares]
+    ];
+    xIsNext = true;
+    status = 'X先走';
+    winner = null;
   }
 }
