@@ -119,6 +119,7 @@ class _TicTacToeState extends State<TicTacToe> {
       setState(() {
         history.removeLast();
         squares = [...history.last];
+        winner = null;
       });
     }
   }
