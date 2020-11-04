@@ -87,6 +87,8 @@ flutter:
     - assets/github_client/avatar-default.png
     - assets/github_client/logo_light.png
     - assets/github_client/logo_dark.png
+    - assets/data/cinema_list.json
+    - assets/data/movie_list.json
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

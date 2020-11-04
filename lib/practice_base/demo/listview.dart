@@ -60,7 +60,9 @@ class InfiniteListViewState extends State<ListViewDemo> {
                   );
                 }
               }
-              return ListTile(title: Text(_words[index]));
+              return ListTile(
+                title: Text(_words[index]),
+              );
             },
             separatorBuilder: (context, index) => Divider(
               height: .0,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_practice/practice_exampled/github_client/github_client.dart';
+import 'package:flutter_practice/practice_exampled/juhe_movie/juhe_movie.dart';
 import 'package:flutter_practice/practice_exampled/modals/route.dart';
 import 'package:flutter_practice/practice_exampled/tic_tac_toe/tic_tac_toe.dart';
 import './index.dart';
@@ -16,6 +17,7 @@ class PracticeExampledPage extends StatelessWidget {
       '五子棋(未完成)',
       FiveInARowExampled(),
     ),
+    RouteModal('聚合电影-静态版', JuheMovie()),
   ];
   Widget build(BuildContext context) {
     return ListView(
