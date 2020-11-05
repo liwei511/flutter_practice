@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_practice/practice_exampled/juhe_movie/widgets/custom_list_item.dart';
 
 class MovieDetail extends StatefulWidget {
   MovieDetail({Key key, this.title}) : super(key: key);
@@ -17,6 +18,34 @@ class _MovieDetailState extends State<MovieDetail> {
     ['类型', '动画'],
     ['豆瓣评分', '8.0'],
     ['语言', '中文'],
+  ];
+
+  List cinemas = [
+    {
+      "cinema_code": 11010101,
+      "cinema_name": "百老汇影城（apm购物中心店）",
+      "box_office": "60362.00"
+    },
+    {
+      "cinema_code": 11010201,
+      "cinema_name": "新影联东环影城",
+      "box_office": "27996.00"
+    },
+    {
+      "cinema_code": 11010301,
+      "cinema_name": "百老汇影城（东方广场店）",
+      "box_office": "75065.00"
+    },
+    {
+      "cinema_code": 11010521,
+      "cinema_name": "沃美影城（回龙观店）",
+      "box_office": "88466.00"
+    },
+    {
+      "cinema_code": 11010661,
+      "cinema_name": "耀莱成龙影城（王府井店）",
+      "box_office": "51365.00"
+    },
   ];
 
   @override
@@ -41,7 +70,7 @@ class _MovieDetailState extends State<MovieDetail> {
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
                 mainAxisSpacing: 5.0,
-                crossAxisSpacing: 5.0,
+                crossAxisSpacing: .0,
                 childAspectRatio: 4.0,
               ),
               delegate: SliverChildBuilderDelegate(
@@ -60,14 +89,16 @@ class _MovieDetailState extends State<MovieDetail> {
               ),
             ),
           ),
-          SliverFixedExtentList(
-            itemExtent: 20,
+          SliverList(
+            // itemExtent: 120,
             delegate: SliverChildBuilderDelegate(
-              (context, index) => Container(
-                alignment: Alignment.center,
-                child: Text('影院$index'),
+              (context, index) => CustomListItem(
+                child: Text('几个影厅'),
+                title: Text(cinemas[index]['cinema_name']),
+                subtitle: Text(cinemas[index]['box_office']),
+                trailing: Icon(Icons.more_vert),
               ),
-              childCount: 50,
+              childCount: cinemas.length,
             ),
           ),
         ],

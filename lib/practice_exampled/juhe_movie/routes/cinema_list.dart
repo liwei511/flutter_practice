@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'dart:convert';
 
+import 'package:flutter_practice/practice_exampled/juhe_movie/routes/cinema_detail.dart';
+
 class CinemaList extends StatefulWidget {
   CinemaList({Key key}) : super(key: key);
 
@@ -71,6 +73,12 @@ class _CinemaListState extends State<CinemaList> {
           return ListTile(
             title: Text(cinemas[index]['cinema_name']),
             subtitle: Text(cinemas[index]['box_office']),
+            onTap: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => CinemaDetail(
+                          title: cinemas[index]['cinema_name'],
+                        ))),
           );
         },
         separatorBuilder: (context, index) => Divider(
