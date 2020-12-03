@@ -22,7 +22,7 @@ class _HomeRouteState extends State<HomeRoute> {
   Widget build(
     BuildContext context,
   ) {
-    UserModel userModel = Provider.of<UserModel>(context);
+    // UserModel userModel = Provider.of<UserModel>(context);
 
     _dio.options.baseUrl = 'https://api2.huayingjuhe.com';
 
