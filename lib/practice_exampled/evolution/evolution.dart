@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 class Evolution extends StatefulWidget {
@@ -71,8 +73,36 @@ class _EvolutionState extends State<Evolution> {
     randNum();
   }
 
+  // 空的格子个数
+  getZeroCount() {
+    var count = 0;
+    for (var i = 0; i < 4; i++) {
+      for (var j = 0; j < 4; j++) {
+        if (bound[i][j] == 0) {
+          count++;
+        }
+      }
+    }
+    return count;
+  }
+
   // 生成随机数
   randNum() {
+    // 小于getZeroCount的随机数
+    int n = Random(10) as int;
+    print(Random(10));
+    for (var i = 0; i < 4; i++) {
+      for (var j = 0; j < 4; j++) {
+        if (n == 0) {
+          // 随机数 random % 3 ? 2 : 4
+          bound[i][j] = 2;
+          break;
+        }
+        if (bound[i][j] == 0) {
+          n--;
+        }
+      }
+    }
     setState(() {});
   }
 

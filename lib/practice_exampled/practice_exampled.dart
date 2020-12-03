@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_practice/practice_exampled/evolution/evolution.dart';
 import 'package:flutter_practice/practice_exampled/github_client/github_client.dart';
 import 'package:flutter_practice/practice_exampled/juhe_movie/juhe_movie.dart';
 import 'package:flutter_practice/practice_exampled/modals/route.dart';
@@ -13,6 +14,7 @@ class PracticeExampledPage extends StatelessWidget {
     ),
     RouteModal('github 客户端', GithubClient()),
     RouteModal('井字棋', TicTacToe()),
+    RouteModal('进化棋', Evolution()),
     RouteModal(
       '五子棋(未完成)',
       FiveInARowExampled(),
