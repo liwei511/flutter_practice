@@ -55,7 +55,9 @@ class _EvolutionState extends State<Evolution> {
             label: Text('重玩'),
             icon: Icon(Icons.repeat),
             onPressed: () {
-              initGame();
+              setState(() {
+                initGame();
+              });
             },
           ),
         ],
@@ -171,11 +173,11 @@ class _EvolutionState extends State<Evolution> {
   }
 
   handleGesture(Direction direction) {
+    print(direction);
     // 记录旋转
     bool flipped = false;
     bool transposed = false;
     if (direction == Direction.up) {
-      print('up');
       setState(() {
         grid = transposeGrid(grid);
         grid = flipGrid(grid);
@@ -183,20 +185,18 @@ class _EvolutionState extends State<Evolution> {
         flipped = true;
       });
     } else if (direction == Direction.right) {
-      print('right');
       setState(() {
         grid = flipGrid(grid);
         flipped = true;
       });
     } else if (direction == Direction.down) {
-      print('down');
       setState(() {
         grid = transposeGrid(grid);
         transposed = true;
       });
-    } else {
-      print('left');
     }
+
+    print('web端这里会报错');
     List<List<int>> past = copyGrid(grid);
     // 每一行操作
     for (int i = 0; i < 4; i++) {
@@ -209,7 +209,7 @@ class _EvolutionState extends State<Evolution> {
     }
     // 这行应该注释掉吧？
     setState(() {
-      grid = addNumber(grid, gridNew);
+      addNumber(grid, gridNew);
     });
     bool changed = compare(past, grid);
     if (flipped) {
@@ -271,6 +271,9 @@ class _EvolutionState extends State<Evolution> {
     gridNew = blankGrid();
     addNumber(grid, gridNew); // 是引用类型
     addNumber(grid, gridNew);
+    score = 0;
+    gameOver = false;
+    gameWon = false;
   }
 
   startGame() {}

@@ -14,7 +14,7 @@ class PracticeExampledPage extends StatelessWidget {
     ),
     RouteModal('github 客户端', GithubClient()),
     RouteModal('井字棋', TicTacToe()),
-    RouteModal('进化棋', Evolution()),
+    RouteModal('进化棋(web环境无shared_preferences)', Evolution()),
     RouteModal(
       '五子棋(未完成)',
       FiveInARowExampled(),
