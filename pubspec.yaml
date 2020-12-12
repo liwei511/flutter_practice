@@ -35,7 +35,7 @@ dependencies:
   dio: ^3.0.10
   webview_flutter: ^1.0.5
   provider: ^3.0.0+1
-  shared_preferences: ^0.5.1+1
+  shared_preferences: ^0.5.12+4 # 包装特定于平台的持久性存储，以存储简单数据（iOS和macOS上为NSUserDefaults，Android上为SharedPreferences等）。数据可以异步地持久化到磁盘上，并且不能保证在返回后将写操作持久化到磁盘上，因此该插件一定不能用于存储关键数据。
   cached_network_image: ^2.0.0
   fluttertoast: ^3.0.3
   flukit: ^1.0.2
